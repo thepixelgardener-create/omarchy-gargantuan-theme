@@ -1,0 +1,115 @@
+# Wallpaper generation
+
+All 27 images, nine wallpapers and their eighteen span panels, were painted by the image generation tool built into OpenAI's Codex (the `gpt-6.1-sol` agent in Codex CLI 0.167), from the prompts below. The tool returns fixed sizes: 1672 × 941 for 16:9 and 1024 × 1536 for 2:3 portrait. Codex saved every result unaltered; nothing was painted over or retouched afterwards. ASSETS.md describes how the panels were then aligned and how everything was upscaled.
+
+## How the panels were made
+
+A span shows one scene on three monitors: a portrait screen on the left, the main 16:9 screen in the middle and a 16:9 screen on the right. The generator cannot paint that panorama in one image, so each scene was built outward from its wallpaper:
+
+1. The wallpaper was generated from the style paragraph and the scene's own paragraph.
+2. `tools/span-canvas.py` cut the outer quarter of the wallpaper, scaled it to the panel's scale and placed it at the edge of a flat grey canvas: a 2:3 portrait canvas for the left panel, a 16:9 canvas for the right.
+3. Codex gave each canvas to the image tool as the image to edit, with the LEFT or RIGHT prompt, and the tool painted the grey away.
+
+The strip of the wallpaper on each canvas is what makes the scene continue across the bezel: the generator paints outward from it at its scale, in its light.
+
+Portrait panels had one recurring failure: the generator wanted a picture of its own and painted the main subject a second time, a second cut-open planet, gas giant, Dyson sphere, plasma column or gate. Revision 2 of the LEFT prompt and the left notes marked (rev. 2) below say outright that the subject is not in the panel; with them every redone panel passed on its first attempt.
+
+## Style (opens every wallpaper prompt)
+
+A 16:9 widescreen desktop wallpaper for Gargantuan, a dark desktop theme about colossal structures in space. Cinematic, photorealistic science-fiction concept art with the physical plausibility and overwhelming sense of scale of a high-end space film. Deep blue-black space (#0a0d16) fills most of the frame; the light is concentrated in the subject and falls off into darkness, leaving quiet, uncluttered dark areas where desktop windows and text can sit. Precise, physically motivated lighting, rich but restrained colour, subtle film grain. The scene continues naturally past the left and right edges of the frame: no vignette and no framing devices at the edges. No text, letters, numbers, logos, insignia, symbols, watermarks, signatures, borders, user interface or people.
+
+## LEFT prompt
+
+Revision 1:
+
+> Extend this wallpaper to the left. The input image is a tall portrait canvas. The narrow vertical strip on its right side is the left edge of an existing 16:9 wallpaper, described below. Everything flat mid-gray is empty canvas: paint it so the scene continues seamlessly to the left of the strip and above and below it, as if the same camera simply had a wider and taller field of view. Keep the strip's content exactly where it is, at the same scale, perspective, light direction, colour, grain and level of detail. Continue every element that crosses the strip's edges along its natural path. This panel is shown on its own portrait monitor beside the main screen, so give it a calm composition of its own over its full height: {LEFT NOTE}. Keep large areas dark. No gray left over, no seams, no borders, no text, no people.
+> The wallpaper: {WALLPAPER PARAGRAPH}
+
+Revision 2 replaces the sentence that begins "This panel is shown" with:
+
+> This panel is shown on a portrait monitor to the left of the main screen. It is the far left edge of the same scene, not a new picture: the main subject lies to the right of the strip and must not appear again here, so paint no second planet, sphere, ring, gate or structure, and do not re-centre the composition. What it shows: {LEFT NOTE}.
+
+## RIGHT prompt
+
+> Extend this wallpaper to the right. The input image is a wide 16:9 canvas. The narrow vertical strip on its left side is the right edge of an existing 16:9 wallpaper, described below. Everything flat mid-gray is empty canvas: paint it so the scene continues seamlessly to the right of the strip and above and below it, as if the same camera simply had a wider field of view. Keep the strip's content exactly where it is, at the same scale, perspective, light direction, colour, grain and level of detail. Continue every element that crosses the strip's edges along its natural path. This panel is shown on its own monitor beside the main screen, so give it a calm composition of its own: {RIGHT NOTE}. Keep large areas dark. No gray left over, no seams, no borders, no text, no people.
+> The wallpaper: {WALLPAPER PARAGRAPH}
+
+Every prompt asked for a 16:9 landscape or a 2:3 portrait in words; the size itself cannot be prompted.
+
+## The scenes
+
+Attempts count every image generated for that file, including those rejected by Codex or by the alignment review. They were checked against Codex's own folder of generated images: each kept image is byte-identical to one of them.
+
+### 01 Gargantuan
+
+**Wallpaper** (1 attempt): Gargantuan. A supermassive black hole seen almost edge-on, rendered with physically accurate gravitational lensing: a perfectly black shadow at the centre ringed by a thin, brilliant photon ring; the accretion disk of glowing gas wraps around it, and its far side is bent by gravity into a luminous arc that rises over the top of the shadow and loops beneath it. Relativistic Doppler beaming makes the approaching side of the disk blazing white-gold, faintly blue at its brightest, and the receding side dimmer amber and deep red. The flat disk extends far out to both sides past the edges of the frame. The background starfield is warped and stretched into arcs around the black hole. Immense, silent, overwhelming. Mostly black space; the disk is the only light.
+
+**Left note** (rev. 1, 1 attempt): the accretion disk's outer edge continuing as a thin flat band with the colour and brightness it has at the strip's edge, fading into faint glowing dust; lensed, stretched stars relaxing into an ordinary starfield; deep black above and below
+
+**Right note** (1 attempt): the disk's other outer edge continuing as a thin flat band with the colour and brightness it has at the strip's edge, fading into faint glowing dust; lensed stars relaxing into an ordinary starfield; deep black above and below
+
+### 02 Fusion
+
+**Wallpaper** (2 attempts; the second gave the plasma a clearer path around the torus): A star in a bottle. The inside of a colossal fusion reactor: the camera floats within a vast doughnut-shaped vacuum chamber whose curved walls, lined with dark heat-shield tiles and ports, arc away in both directions into darkness. Through it runs a ring of plasma, a slender luminous ribbon of violet, magenta and blue-white fire at a hundred million degrees, twisted into a slow helix by invisible magnetic fields and suspended without touching anything. Its glow is the only light: it rakes across the tiled walls and the edges of gigantic superconducting coils that wrap the torus like ribs. The ribbon enters from one side, sweeps across the frame in a long curve and recedes around the torus, so the eye follows it into the distance. Mostly darkness and dim steel; the light is magenta, violet and white-hot blue.
+
+**Left note** (rev. 1, 1 attempt): the curved chamber wall and its rib-like magnet coils arching up overhead and down below, the plasma's violet glow fading on the tiles toward the outer edge
+
+**Right note** (1 attempt): the plasma ribbon continuing its sweep and receding around the curve of the torus to a faint glowing vanishing point, the coils repeating into darkness
+
+### 03 Core
+
+**Wallpaper** (1 attempt): A planet opened to its heart. A rocky world hangs in black space, lit from one side by a distant star. A vast wedge has been removed from it like a slice from a fruit, exposing its interior in a clean cross-section: the thin rocky crust, the deep mantle in layered bands of dark red and ochre stone with slow convection plumes rising through it, the churning outer core of liquid iron glowing orange and gold, and at the very centre a white-hot crystalline inner core whose light radiates outward across the cut faces. The cut glows from within while the planet's outer surface stays dark and cratered on its night side. Thin wisps of molten material and sparks drift from the exposed core into space. Monumental, physically detailed, quietly unsettling.
+
+**Left note** (rev. 2, 4 attempts: three with rev. 1 each painted a second cut-open planet): the planet is NOT in this panel: it lies entirely to the right, beyond the strip, so do not paint any planet, sphere, moon or second copy of the cut-open world here. Continue the strip's dark space and its few glowing embers and wisps drifting outward, then deep empty space with sparse faint stars, a few tiny dim red fragments of molten rock far away, and a faint cold nebula haze high up
+
+**Right note** (1 attempt): the planet's sunlit limb wherever it crosses the strip, then deep space and a small grey moon catching the same starlight from the same direction
+
+### 04 Thalassa
+
+**Wallpaper** (2 attempts; the first was lost when Codex's usage limit stopped the agent before it saved it): A world with no land. An entire planet covered by a single endless ocean, seen from high orbit as it turns from day into night. Deep sapphire and ink-blue water, a long silver path where the star's light glints off the sea, colossal spiral storm systems of white cloud wheeling across the hemisphere, and a thin luminous blue line of atmosphere along the curved limb. The night side falls into darkness lit only by faint flickers of lightning inside the clouds. Nowhere a coastline, island or ice: only water, all the way around. The planet fills the lower part of the frame; above it, black space.
+
+**Left note** (rev. 1, 1 attempt): the planet's curved limb and thin blue atmosphere continuing into the night side, faint lightning flickering inside dark storm clouds; above, deep black space with a small pale moon
+
+**Right note** (1 attempt): the limb curving on, the sunlit ocean with further storm spirals; above, black space with a faint band of the Milky Way
+
+### 05 Tether
+
+**Wallpaper** (1 attempt): A road to orbit. A space elevator seen from the edge of space, a hundred kilometres above an ocean world at sunrise. A single, impossibly thin tether rises straight up from a sea platform far below, through the cloud deck and the glowing blue layers of the atmosphere, and on up out of the frame into black space toward a station tens of thousands of kilometres away. A climber the size of a building ascends the cable, its windows catching the first sunlight. The curvature of the planet spans the frame, the sunrise burning a thin gold line along the horizon. The tether is a hair-fine line of light, a little left of centre, and its fineness is what makes the height feel colossal.
+
+**Left note** (rev. 1, 2 attempts): the curved horizon and atmosphere continuing, the dawn glow fading into blue night over the ocean; above, deep black space full of faint stars, and very high up a small bright orbital station glinting
+
+**Right note** (3 attempts): the curved horizon continuing toward the sunrise, the gold line brightening, cloud patterns over the ocean far below; above, black space
+
+Both panels kept painting a second tether. For the final attempts Codex added its own instruction to paint only sky, atmosphere, ocean and clouds; that added wording was not recorded.
+
+### 06 Giant
+
+**Wallpaper** (2 attempts; the second left more dark space above the rings): A gas giant seen from inside its own asteroid belt. A colossal banded planet of cream, amber, rust and pale blue, with storms the size of continents, crosses the frame, encircled by vast thin rings that sweep across the scene and cast a sharp curved shadow onto its cloud bands. In the foreground and middle distance the rocks of an asteroid belt drift in sunlight: craggy, cratered boulders from house-sized to mountain-sized, lit hard from one side by a small distant sun, with fine dust glittering between them. Two small moons hang beside the planet. Immense depth from the nearest rock to the planet behind.
+
+**Left note** (rev. 2, 6 attempts: five with rev. 1 were rejected for painting a second gas giant or moving the sun): the gas giant is NOT in this panel: it lies entirely to the right, beyond the strip. Continue the asteroids and the thin outer edge of the ring arc leftward exactly where they leave the strip; more craggy asteroids at varied distances, one large rock close to the camera half in shadow at the bottom; deep black space with sparse stars above
+
+**Right note** (1 attempt): the rings and the planet's limb continuing wherever they cross the strip; scattered asteroids thinning out into black space, lit from the same direction as in the strip
+
+### 07 Star Lifter
+
+**Wallpaper** (1 attempt): Harvesting a star. A colossal megastructure mines a red-orange star: a ring of enormous machines orbits close above the star's boiling surface and bends its magnetic field to pull a vast, twisting column of plasma up out of the photosphere. The stream of stellar matter, gold and white-hot at its base and cooling to deep orange and red as it rises, spirals along invisible field lines into a collector structure far above. The star fills the lower part of the frame with a granulated surface, sunspots and arching prominences; the machines are tiny dark silhouettes against it, revealing the inconceivable scale.
+
+**Left note** (rev. 2, 4 attempts: three with rev. 1 each added a second plasma column and collector): the plasma column and its collector are NOT in this panel: they lie to the right, beyond the strip, so paint no second column, stream, funnel or collector here. The star's curved limb continues down and to the left with only small, low arching prominences close to its surface; the orbiting machine ring continues along the limb as a thin chain of small dark silhouettes and glints; the upper two thirds are dark space with sparse faint stars
+
+**Right note** (1 attempt): the star's limb continuing, with a second, fainter plasma stream rising from another part of the surface toward its own collector; the machine ring continuing around the curve
+
+### 08 Dyson
+
+**Wallpaper** (1 attempt): A star being enclosed. A Dyson sphere under construction around a yellow-white star, seen from far enough away that the whole sphere is visible: a shell built from millions of hexagonal collector panels on a lattice framework, about two-thirds complete. Through the unfinished gaps the star blazes out in sharp beams of white and gold light that cut across space, while the finished sections glow a dull orange with the heat they absorb. Swarms of tiny construction craft and loose panels orbit around the sphere in thin glinting rings. Mostly dark: the finished shell swallows most of the light.
+
+**Left note** (rev. 1, 3 attempts; the first two painted another sphere, and for the third Codex added that the sphere stays off the panel): a stream of new panels and construction craft flowing in a long arc toward the sphere; a beam of light from a gap in the shell continuing out into space
+
+**Right note** (1 attempt): the orbiting swarm rings continuing around the sphere; far away, a slim orbital factory building panels, tiny in the distance; deep space
+
+### 09 Gate
+
+**Wallpaper** (1 attempt): A gate between galaxies. A colossal ring-shaped gate hangs in interstellar space, seen at a slight angle: a dark, precisely machined torus hundreds of kilometres across, with faint blue light along its inner rim. Inside the ring space itself is folded: instead of the stars behind it, the opening shows a tunnel of bent light leading to somewhere else, the bright spiral of a distant galaxy at its far end, while the stars around the ring's edge are smeared into concentric arcs by gravitational lensing. A tiny ship with a single glowing engine approaches the gate, giving it a monstrous sense of scale. Cool cyan, electric blue and white against blue-black space, with one faint warm accent from the ship's engine. No glyphs, symbols or chevrons on the ring.
+
+**Left note** (rev. 2, 4 attempts: three with rev. 1 each painted a second gate): the gate is NOT in this panel: it lies entirely to the right, beyond the strip, so paint no ring, portal, tunnel or galaxy here. Continue the strip's dark starfield and any faint lensed star streaks, relaxing into an ordinary starfield; a faint line of tiny distant beacon lights running toward the right, marking the approach lane; deep space
+
+**Right note** (1 attempt): the ring's outer edge wherever it crosses the strip, the lensed arcs relaxing into an ordinary starfield, and a faint dark nebula far away

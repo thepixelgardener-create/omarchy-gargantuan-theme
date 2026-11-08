@@ -1,0 +1,40 @@
+# Gargantuan: a dark Omarchy theme about colossal structures in space.
+# Blue-black like deep space, warm white like starlight, amber like the inner
+# edge of an accretion disk. DESIGN.md lists the measured contrast of every color.
+
+mode = "dark"
+
+accent = "#f2a541"
+selection = "#2b3354"
+muted = "#737a8f"
+
+# Doppler shift: the active border runs from the approaching, blueshifted side
+# of an accretion disk through its amber heart to the receding, redshifted side.
+hyprland_active_border = "rgba(729ef2ff) rgba(f2a541ff) rgba(ec6464ff) 45deg"
+hyprland_inactive_border = "#737a8f"
+
+background = "#0a0d16"
+dark_background = "#070910"
+darker_background = "#03050a"
+lighter_background = "#151a28"
+
+foreground = "#ebe5d9"
+dark_foreground = "#aca69b"
+light_foreground = "#f4efe6"
+bright_foreground = "#fffaf2"
+
+red = "#ec6464"
+orange = "#f29350"
+yellow = "#f0c35e"
+green = "#84d892"
+cyan = "#4cc2d6"
+blue = "#729ef2"
+magenta = "#b48bf0"
+brown = "#b88b66"
+
+bright_red = "#f59393"
+bright_yellow = "#f6d78f"
+bright_green = "#ade6b6"
+bright_cyan = "#83d5e2"
+bright_blue = "#9dbcf6"
+bright_magenta = "#cbaef5"
