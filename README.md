@@ -43,13 +43,7 @@ The screen with the most pixels then shows the wallpaper and the screens directl
 | Main | 1920 × 1080 (a 4K screen at scale 2) | |
 | Right | 1920 × 1080 | 70 px lower than the main screen |
 
-`backgrounds/spans/layout.json` records exactly that: where each panel lies relative to the wallpaper. The plugin places the panels from it and from your monitor positions in Hyprland, so on other arrangements the scene still meets at the bezels. A screen that reaches past its panel shows a blurred copy of the panel in the gap. If your bezels are wider or a screen sits higher than Hyprland's layout says, nudge the picture on that screen:
-
-```sh
-omarchy-shell background setScreen DP-3 y -12    # 12 px up on the right screen
-omarchy-shell background setScreen DP-3 scale 1.05
-```
-
+`backgrounds/spans/layout.json` records exactly that: where each panel lies relative to the wallpaper. The plugin places the panels from it and from your monitor positions in Hyprland, so on other arrangements the scene still meets at the bezels, and its autoscale sizes each panel by the monitor's physical size, so the scene is as large on a 24-inch screen as on a 32-inch one. To fine-tune, middle-click the desktop: the plugin's editor shows your monitors with their pictures, and you drag and scroll to move and zoom the picture on each.
 
 ## Wallpapers
 
