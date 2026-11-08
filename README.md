@@ -2,7 +2,7 @@
 
 # Gargantuan
 
-A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine wallpapers of colossal structures in space. Every wallpaper also spans three monitors: with the [Multimonitor Background](https://github.com/thepixelgardener-create/omarchy-multimonitor-background) plugin each scene runs across all of them, continuing past the bezels.
+A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine wallpapers of colossal structures in space. Every wallpaper also spans three monitors: with the [Panomarchy](https://github.com/thepixelgardener-create/panomarchy) plugin each scene runs across all of them, continuing past the bezels.
 
 ![Gargantuan across three monitors: a black hole's accretion disk running from a portrait screen through the main screen to a third](previews/01-gargantuan.webp)
 
@@ -26,10 +26,10 @@ Omarchy installs and activates the theme, generating application colors from `co
 
 ## Across three monitors
 
-Omarchy shows the same wallpaper on every screen. Every Gargantuan wallpaper also has a left and a right panel in `backgrounds/spans/<name>/`, the parts of the scene beyond its edges. To show them, install the separate [Multimonitor Background](https://github.com/thepixelgardener-create/omarchy-multimonitor-background) plugin:
+Omarchy shows the same wallpaper on every screen. Every Gargantuan wallpaper also has a left and a right panel in `backgrounds/spans/<name>/`, the parts of the scene beyond its edges. To show them, install the separate [Panomarchy](https://github.com/thepixelgardener-create/panomarchy) plugin:
 
 ```sh
-omarchy plugin add https://github.com/thepixelgardener-create/omarchy-multimonitor-background.git --enable
+omarchy plugin add https://github.com/thepixelgardener-create/panomarchy.git --enable
 omarchy restart shell
 ```
 
