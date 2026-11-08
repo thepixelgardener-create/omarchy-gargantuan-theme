@@ -52,8 +52,8 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 
 | Gargantuan | Fusion |
 | --- | --- |
-| [![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)](backgrounds/01-gargantuan.webp) | [![Fusion: a ribbon of violet plasma inside a fusion reactor](backgrounds/02-fusion.webp)](backgrounds/02-fusion.webp) |
-| A supermassive black hole. Gravity bends the far side of its disk over and under the shadow, and the side rushing toward you burns brighter. | A star in a bottle: a ribbon of violet plasma held by magnetic fields inside the torus of a fusion reactor. |
+| [![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)](backgrounds/01-gargantuan.webp) | [![Fusion: a band of glowing plasma floating through the tiled tunnel of a fusion reactor](backgrounds/02-fusion.webp)](backgrounds/02-fusion.webp) |
+| A supermassive black hole. Gravity bends the far side of its disk over and under the shadow, and the side rushing toward you burns brighter. | A star in a bottle: a band of hydrogen plasma floating through the inside of a fusion reactor, whose tiled walls curve away like an endless tunnel. |
 
 | Core | Thalassa |
 | --- | --- |
