@@ -34,12 +34,14 @@ Install the plugin from the theme you just installed:
 cp -r ~/.config/omarchy/themes/gargantuan/span-plugin ~/.config/omarchy/plugins/thepixelgardener.span-background
 omarchy-shell shell rescanPlugins
 omarchy plugin enable thepixelgardener.span-background
+omarchy restart shell
 ```
 
-Enabling it switches Omarchy's built-in background service off. To check which file each screen shows:
+Enabling it switches Omarchy's built-in background service off, and the restart makes sure the shell runs the plugin's code fresh. To check which file each screen shows, or every screen's full state if one looks wrong:
 
 ```sh
 omarchy-shell background spans
+omarchy-shell background spanState
 ```
 
 To go back to the built-in background:

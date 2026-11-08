@@ -445,6 +445,18 @@ Item {
       }
       return lines.join("\n")
     }
+
+    // omarchy-shell background spanState: the service's and every screen's state, for debugging.
+    function spanState(): string {
+      var lines = [
+        "displayed=" + root.displayedBackground, "current=" + root.currentBackground,
+        "incoming=" + root.incomingBackground, "old=" + root.oldBackground, "prepared=" + root.preparedBackground,
+        "reveal=" + root.revealProgress + " finishing=" + root.finishingTransition + " ready=" + root.ready + " suspended=" + root.suspended,
+        "sizes=" + JSON.stringify(root.nativeSizes), "sources=" + JSON.stringify(root.spanSources)
+      ]
+      for (var panel of backgrounds.instances) lines.push(panel.debugState())
+      return lines.join("\n")
+    }
   }
 
   // A prepared frame that no transition claims, say from a theme switch that
@@ -525,6 +537,12 @@ Item {
       // transition names is of the wallpaper, not of this screen's panel.
       readonly property bool oldOnBase: side !== "center" && root.displayedBackground !== ""
         && pathFor(root.displayedBackground) !== root.displayedBackground
+      function debugState() {
+        return modelData.name + " side=" + side + " oldOnBase=" + oldOnBase + " maskReady=" + maskReady
+          + "\n  base path=" + base.path + " decode=" + base.decodeSize + " ready=" + base.ready + " failed=" + base.failed + " readyFrames=" + readyFrames
+          + "\n  old path=" + oldFrame.framePath + " status=" + oldFrame.status + " visible=" + oldFrame.visible
+          + "\n  incoming path=" + incomingFrame.framePath + " status=" + incomingFrame.status + " layer=" + incomingLayer.visible
+      }
       // A function, not a binding: onStatusChanged can run before a binding
       // on the same status has caught up.
       function incomingReady() {
