@@ -5,8 +5,8 @@ set -euo pipefail
 src=$(cd "$(dirname "$0")/.." && pwd)
 dst="$HOME/.config/omarchy/themes/gargantuan"
 mkdir -p "$dst"
-rsync -a --delete \
-  --include='/colors.toml' --include='/icons.theme' --include='/preview*' \
-  --include='/backgrounds/***' --include='/spans/***' --exclude='*' \
+rsync -a --delete --delete-excluded \
+  --include='/colors.toml' --include='/icons.theme' --include='/preview.*' \
+  --include='/backgrounds/***' --exclude='*' \
   "$src/" "$dst/"
 echo "installed to $dst"

@@ -7,8 +7,8 @@
 For each scene with images in work/raw/:
 
     NN-slug.png        -> backgrounds/NN-slug.webp      3840 x 2160
-    NN-slug-right.png  -> spans/NN-slug/right.webp      3840 x 2160
-    NN-slug-left.png   -> spans/NN-slug/left.webp       2160 x 3840
+    NN-slug-right.png  -> backgrounds/spans/NN-slug/right.webp      3840 x 2160
+    NN-slug-left.png   -> backgrounds/spans/NN-slug/left.webp       2160 x 3840
     (all three)        -> previews/NN-slug.webp         the three screens side by side
 
 `--previews [NN-slug ...]` only redraws the previews from the shipped files.
@@ -197,7 +197,7 @@ def build_side(slug, side):
     shown = np.ascontiguousarray(aligned[y:y + h, x:x + w])
     size = (3840, 2160) if side == "right" else (2160, 3840)
     img = upscale(shown, size, f"{slug}-{side}")
-    save_webp(img, ROOT / "spans" / slug / f"{side}.webp")
+    save_webp(img, ROOT / "backgrounds" / "spans" / slug / f"{side}.webp")
     return img
 
 
@@ -223,7 +223,7 @@ def previews_only(slug):
     """Redraw a preview from the shipped wallpaper and panels, without upscaling anything."""
     shipped = lambda p: load(p) if p.exists() else None
     preview(slug, load(ROOT / "backgrounds" / f"{slug}.webp"),
-            shipped(ROOT / "spans" / slug / "left.webp"), shipped(ROOT / "spans" / slug / "right.webp"))
+            shipped(ROOT / "backgrounds" / "spans" / slug / "left.webp"), shipped(ROOT / "backgrounds" / "spans" / slug / "right.webp"))
 
 
 def build(slug):

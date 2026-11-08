@@ -2,7 +2,7 @@
 
 # Gargantuan
 
-A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine wallpapers of colossal structures in space. Every wallpaper also spans three monitors: a small plugin shows each scene across all of them, continuing past the bezels.
+A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine wallpapers of colossal structures in space. Every wallpaper also spans three monitors: with the [Multimonitor Background](https://github.com/thepixelgardener-create/omarchy-multimonitor-background) plugin each scene runs across all of them, continuing past the bezels.
 
 ![Gargantuan across three monitors: a black hole's accretion disk running from a portrait screen through the main screen to a third](previews/01-gargantuan.webp)
 
@@ -26,32 +26,14 @@ Omarchy installs and activates the theme, generating application colors from `co
 
 ## Across three monitors
 
-Omarchy shows the same wallpaper on every screen. The theme ships a left and a right panel for each of its wallpapers in `spans/`, and `span-plugin/` is Omarchy's own background service with one change: the screen with the most pixels shows the wallpaper, and the screens directly to its left and right show its panels. Everything else, the background switcher, transitions, video wallpapers and other themes, works exactly as before.
-
-Install the plugin from the theme you just installed:
+Omarchy shows the same wallpaper on every screen. Every Gargantuan wallpaper also has a left and a right panel in `backgrounds/spans/<name>/`, the parts of the scene beyond its edges. To show them, install the separate [Multimonitor Background](https://github.com/thepixelgardener-create/omarchy-multimonitor-background) plugin:
 
 ```sh
-cp -r ~/.config/omarchy/themes/gargantuan/span-plugin ~/.config/omarchy/plugins/thepixelgardener.span-background
-omarchy-shell shell rescanPlugins
-omarchy plugin enable thepixelgardener.span-background
+omarchy plugin add https://github.com/thepixelgardener-create/omarchy-multimonitor-background.git --enable
 omarchy restart shell
 ```
 
-Enabling it switches Omarchy's built-in background service off, and the restart makes sure the shell runs the plugin's code fresh. To check which file each screen shows, or every screen's full state if one looks wrong:
-
-```sh
-omarchy-shell background spans
-omarchy-shell background spanState
-```
-
-To go back to the built-in background:
-
-```sh
-omarchy plugin disable thepixelgardener.span-background
-omarchy plugin enable omarchy.background
-```
-
-After updating the plugin's files, run `omarchy restart shell`: the shell can keep the old code loaded otherwise.
+The screen with the most pixels then shows the wallpaper and the screens directly to its left and right show its panels. Everything else, the background switcher, transitions, video wallpapers and other themes, works as before. The plugin's README explains how to switch back.
 
 **The layout.** The panels were composed for a portrait screen on the left, a 16:9 main screen in the middle and a 16:9 screen on the right, as on the setup they were made on:
 
@@ -63,7 +45,6 @@ After updating the plugin's files, run `omarchy restart shell`: the shell can ke
 
 Any two or three screens side by side get the panels too, but a screen shaped differently crops its panel to fill, so the scene lines up less exactly at that bezel. A layout with only two screens shows the wallpaper and the panel for the side the second screen is on.
 
-The plugin is a copy of the built-in service from Omarchy 4.0. When Omarchy changes its own background service, the copy does not follow; if anything about wallpapers misbehaves after an Omarchy update, switch back to the built-in with the two commands above.
 
 ## Wallpapers
 
@@ -127,6 +108,6 @@ The palette is held to 30 checks covering contrast, simulated red–green separa
 
 ## Credits and license
 
-The 27 images were generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the plugin changes, the scripts and the written notes are original work. The span plugin is a modified copy of Omarchy's background service, which is MIT-licensed; [span-plugin/LICENSE](span-plugin/LICENSE) carries both notices.
+The 27 images were generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the scripts and the written notes are original work.
 
 Released under the [MIT license](LICENSE).

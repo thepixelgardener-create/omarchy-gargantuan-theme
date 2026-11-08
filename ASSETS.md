@@ -20,7 +20,7 @@ All nine are 3840 × 2160 WebP files at quality 92, like the WebP wallpapers of 
 
 ## Span panels
 
-Every wallpaper has two panels in `spans/<name>/`: `left.webp` (2160 × 3840) for a portrait screen to its left and `right.webp` (3840 × 2160) for a 16:9 screen to its right, together 4.6 MB. They show the parts of one wider scene that lie beyond the wallpaper's edges.
+Every wallpaper has two panels in `backgrounds/spans/<name>/`: `left.webp` (2160 × 3840) for a portrait screen to its left and `right.webp` (3840 × 2160) for a 16:9 screen to its right, together 4.6 MB. They show the parts of one wider scene that lie beyond the wallpaper's edges.
 
 The generator returns at most 1672 × 941 and cannot paint the whole panorama, so the panels were painted outward from the wallpapers, as GENERATION.md describes: each canvas carried a strip from the edge of the wallpaper, and the tool painted the rest of the canvas around it. `tools/build.py` then made the panels:
 
@@ -58,4 +58,4 @@ Lock screen and launcher text sits in the middle of the screen and lands on the 
 
 ## License
 
-The repository's MIT license covers the palette, the notes, the scripts and the images. The 27 images are AI-generated. `span-plugin/` is a modified copy of Omarchy's background service; [span-plugin/LICENSE](span-plugin/LICENSE) carries Omarchy's MIT notice next to this project's.
+The repository's MIT license covers the palette, the notes, the scripts and the images. The 27 images are AI-generated.
