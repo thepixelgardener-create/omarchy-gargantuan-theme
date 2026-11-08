@@ -30,6 +30,8 @@ The generator returns at most 1672 × 941 and cannot paint the whole panorama, s
 
 The panels never contain the strip itself: the main screen shows the wallpaper, so whatever the generator did to its copy is cut away.
 
+`backgrounds/spans/layout.json` records the cut for the plugin: the wallpaper as 1920 × 1080 units, the left panel at x −1080, y −480, 1080 × 1920, the right panel at x 1920, y 70, 1920 × 1080. The same layout holds for all nine scenes.
+
 Four left panels were rejected at review because the generator painted the main subject a second time (Core, Giant, Star Lifter and Gate) and were painted again with stricter prompts. The rejected images are not shipped.
 
 ## Upscaling

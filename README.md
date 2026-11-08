@@ -33,7 +33,7 @@ omarchy plugin add https://github.com/thepixelgardener-create/omarchy-multimonit
 omarchy restart shell
 ```
 
-The screen with the most pixels then shows the wallpaper and the screens directly to its left and right show its panels. Everything else, the background switcher, transitions, video wallpapers and other themes, works as before. The plugin's README explains how to switch back.
+The screen with the most pixels then shows the wallpaper and the screens directly to its left and right show its panels; you can pick each screen's role yourself with `omarchy-shell background setScreen`. Everything else, the background switcher, transitions, video wallpapers and other themes, works as before. The plugin's README explains the settings and how to switch back.
 
 **The layout.** The panels were composed for a portrait screen on the left, a 16:9 main screen in the middle and a 16:9 screen on the right, as on the setup they were made on:
 
@@ -43,7 +43,12 @@ The screen with the most pixels then shows the wallpaper and the screens directl
 | Main | 1920 × 1080 (a 4K screen at scale 2) | |
 | Right | 1920 × 1080 | 70 px lower than the main screen |
 
-Any two or three screens side by side get the panels too, but a screen shaped differently crops its panel to fill, so the scene lines up less exactly at that bezel. A layout with only two screens shows the wallpaper and the panel for the side the second screen is on.
+`backgrounds/spans/layout.json` records exactly that: where each panel lies relative to the wallpaper. The plugin places the panels from it and from your monitor positions in Hyprland, so on other arrangements the scene still meets at the bezels. A screen that reaches past its panel shows a blurred copy of the panel in the gap. If your bezels are wider or a screen sits higher than Hyprland's layout says, nudge the picture on that screen:
+
+```sh
+omarchy-shell background setScreen DP-3 y -12    # 12 px up on the right screen
+omarchy-shell background setScreen DP-3 scale 1.05
+```
 
 
 ## Wallpapers
