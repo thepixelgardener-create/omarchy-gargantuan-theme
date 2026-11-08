@@ -99,7 +99,7 @@ Each wallpaper also comes as a span across three monitors: the wallpaper itself 
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine wallpapers in `backgrounds/`, their span panels in `spans/`, the span plugin, the scripts that built the spans in `tools/`, `preview.webp` and these notes.
+Shipped: `colors.toml`, `icons.theme`, nine wallpapers in `backgrounds/`, their span panels in `spans/`, three-screen previews in `previews/`, the span plugin, the scripts that built the spans in `tools/` and these notes.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 
@@ -110,4 +110,4 @@ Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, b
 3. Push, then install from the clean URL: `omarchy theme install <repo-url>`.
 4. Look at a terminal with `git diff`, Neovim, btop, the Omarchy menu, a notification and the lock screen.
 5. With the span plugin enabled, step through all nine wallpapers on three screens and check that every panel lines up at the bezels.
-6. Keep `preview.webp` current with a real desktop screenshot.
+6. Redraw the previews with `tools/build.py --previews` after any wallpaper or panel changes.
