@@ -1,6 +1,6 @@
 # Wallpaper generation
 
-All 27 images, nine wallpapers and their eighteen span panels, were painted by the image generation tool built into OpenAI's Codex (the `gpt-6.1-sol` agent in Codex CLI 0.167), from the prompts below. The tool returns fixed sizes: 1672 × 941 for 16:9 and 1024 × 1536 for 2:3 portrait. Codex saved every result unaltered; nothing was painted over or retouched afterwards. ASSETS.md describes how the panels were then aligned and how everything was upscaled.
+All 36 images, nine wallpapers, their eighteen span panels and nine paintings that complete the panoramas, were painted by the image generation tool built into OpenAI's Codex (the `gpt-6.1-sol` agent in Codex CLI 0.167), from the prompts below. The tool returns fixed sizes: 1672 × 941 for 16:9 and 1024 × 1536 for 2:3 portrait. Codex saved every result unaltered; nothing was painted over or retouched afterwards. ASSETS.md describes how the panels were then aligned and how everything was upscaled.
 
 ## How the panels were made
 
@@ -35,6 +35,13 @@ Revision 2 replaces the sentence that begins "This panel is shown" with:
 > The wallpaper: {WALLPAPER PARAGRAPH}
 
 Every prompt asked for a 16:9 landscape or a 2:3 portrait in words; the size itself cannot be prompted.
+
+## GAPS prompt
+
+The wallpaper and the two panels do not cover the whole three-monitor layout: strips above and below the main and right screens stay empty. `tools/panorama.py --canvas` wrote, for each scene, the right-hand 16:9 of its panorama with those strips flat grey, and Codex gave it to the image tool with this prompt. All nine passed on the first attempt. ASSETS.md describes how the results were set into the panoramas.
+
+> Fill in the missing parts of this panoramic wallpaper. The input image is a 16:9 crop of a wide space scene that spans several monitors. Everything flat mid-gray is empty canvas: a few strips along the top and bottom edges. Paint only those gray strips, so the scene continues seamlessly into them, as if the same camera had captured the whole frame at once. Continue every element that reaches a gray strip along its natural path, at the same scale, perspective, light direction, colour, grain and level of detail: the curve of a planet's limb or a ring, a tether, the plasma, clouds, ocean, fire, rock, dust and the star field. Keep everything already painted exactly where it is and as it is: do not move, rescale, recolour or redraw it, and do not re-centre the composition. Add nothing new in the strips: no second planet, moon, sphere, ring, gate or structure, and no new bright light. Where nothing reaches a strip, it is quiet dark space with sparse faint stars, like the dark areas next to it. No gray left over, no seams, no borders, no vignette, no text, no people.
+> The scene: {WALLPAPER PARAGRAPH}
 
 ## The scenes
 

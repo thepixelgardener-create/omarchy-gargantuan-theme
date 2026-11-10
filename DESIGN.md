@@ -93,13 +93,13 @@ Every one of the fourteen standard and bright terminal colors reaches at least 6
 - The active-border gradient also reaches the shell's popups, notifications, menus and lock screen, because Omarchy uses the Hyprland border for them, so red appears in borders that are not errors.
 - Blue and magenta are the closest signal pair. Both stay well clear of the threshold, and they keep their distinct physical sources.
 
-## Span wallpapers
+## Panoramas
 
-Each wallpaper also comes as a span across three monitors: the wallpaper itself on the main screen, and a left and a right panel that continue the scene past the bezels. Omarchy's own background service shows one image on every screen, so the spans need the separate [Panomarchy](https://github.com/thepixelgardener-create/panomarchy) plugin, which finds a wallpaper's panels in `backgrounds/spans/<name>/`. Without it the theme is complete and every wallpaper an ordinary one. README.md explains the layout.
+Each wallpaper also comes as a panorama of three monitors, `backgrounds/span-<name>.webp`: the wallpaper itself on the main screen, and the scene continuing past the bezels onto a portrait screen on the left and a 16:9 screen on the right. Omarchy's own background service shows one image on every screen, so the panoramas need a tool that spans one image across them, such as the [Station](https://github.com/Yakumy/Station) plugin. Without one the theme is complete, and the nine plain wallpapers, which sort first, are what a single screen shows. README.md explains the layout.
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine wallpapers in `backgrounds/`, their span panels and their `layout.json` in `backgrounds/spans/`, three-screen previews in `previews/`, the scripts that built the spans in `tools/` and these notes. The plugin that shows the spans lives in its own repository.
+Shipped: `colors.toml`, `icons.theme`, nine wallpapers and their nine panoramas in `backgrounds/`, three-screen previews in `previews/`, the scripts that built the panoramas in `tools/` and these notes. Spanning the panoramas is left to a wallpaper plugin.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 
@@ -109,5 +109,5 @@ Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, b
 2. Inspect the wallpapers and their provenance in ASSETS.md.
 3. Push, then install from the clean URL: `omarchy theme install <repo-url>`.
 4. Look at a terminal with `git diff`, Neovim, btop, the Omarchy menu, a notification and the lock screen.
-5. With the Panomarchy plugin enabled, step through all nine wallpapers on three screens and check that every panel lines up at the bezels.
-6. Redraw the previews with `tools/build.py --previews` after any wallpaper or panel changes.
+5. With Station in Span mode, step through all nine panoramas on three screens and check that every scene lines up at the bezels; then frame one off-centre and zoomed out, and check the gaps.
+6. Redraw the previews with `tools/build.py --previews` and the panoramas with `tools/panorama.py` after any wallpaper or panel changes.

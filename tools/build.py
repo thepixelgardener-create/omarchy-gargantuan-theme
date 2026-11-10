@@ -6,10 +6,13 @@
 
 For each scene with images in work/raw/:
 
-    NN-slug.png        -> backgrounds/NN-slug.webp      3840 x 2160
-    NN-slug-right.png  -> backgrounds/spans/NN-slug/right.webp      3840 x 2160
-    NN-slug-left.png   -> backgrounds/spans/NN-slug/left.webp       2160 x 3840
-    (all three)        -> previews/NN-slug.webp         the three screens side by side
+    NN-slug.png        -> backgrounds/NN-slug.webp           3840 x 2160
+    NN-slug-right.png  -> work/panels/NN-slug/right.webp     3840 x 2160
+    NN-slug-left.png   -> work/panels/NN-slug/left.webp      2160 x 3840
+    (all three)        -> previews/NN-slug.webp              the three screens side by side
+
+The panels are not shipped on their own: tools/panorama.py places them with
+the wallpaper in one panorama per scene, backgrounds/span-NN-slug.webp.
 
 `--previews [NN-slug ...]` only redraws the previews from the shipped files.
 
@@ -30,6 +33,7 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW, CANVAS, WORK = ROOT / "work/raw", ROOT / "work/canvas", ROOT / "work"
 ESRGAN = WORK / "bin/realesrgan/realesrgan-ncnn-vulkan"
 UPSCALED = WORK / "upscaled"
+PANELS = WORK / "panels"
 ESRGAN_SHARE = 0.65
 QUALITY = 92
 
@@ -92,8 +96,12 @@ def screen_rect(side, cw, ch):
     return 0, round(150 * k), round(1080 * k), round(1920 * k)
 
 
-def align(out, canvas, rect):
-    """Warp the generated image onto the canvas so its copy of the strip lies on the original."""
+def align(out, canvas, rect, with_matrix=False):
+    """Warp the generated image onto the canvas so its copy of the strip lies on the original.
+
+    With `with_matrix`, also return the 2x3 warp, so a caller can tell the
+    generated pixels from the replicated border the warp leaves at the edges.
+    """
     x, y, w, h = rect
     if out.shape[:2] != canvas.shape[:2]:
         print(f"  generator returned {out.shape[1]}x{out.shape[0]}, canvas is {canvas.shape[1]}x{canvas.shape[0]}: resizing")
@@ -137,7 +145,7 @@ def align(out, canvas, rect):
             matrix = np.float32([[1, 0, 0], [0, 1, 0]])
     aligned = cv2.warpAffine(out, matrix, (canvas.shape[1], canvas.shape[0]),
                              flags=cv2.INTER_LANCZOS4, borderMode=cv2.BORDER_REPLICATE)
-    return aligned
+    return (aligned, matrix) if with_matrix else aligned
 
 
 SEAM = 16  # strip columns next to the seam, in canvas px
@@ -197,7 +205,7 @@ def build_side(slug, side):
     shown = np.ascontiguousarray(aligned[y:y + h, x:x + w])
     size = (3840, 2160) if side == "right" else (2160, 3840)
     img = upscale(shown, size, f"{slug}-{side}")
-    save_webp(img, ROOT / "backgrounds" / "spans" / slug / f"{side}.webp")
+    save_webp(img, PANELS / slug / f"{side}.webp")
     return img
 
 
@@ -223,7 +231,7 @@ def previews_only(slug):
     """Redraw a preview from the shipped wallpaper and panels, without upscaling anything."""
     shipped = lambda p: load(p) if p.exists() else None
     preview(slug, load(ROOT / "backgrounds" / f"{slug}.webp"),
-            shipped(ROOT / "backgrounds" / "spans" / slug / "left.webp"), shipped(ROOT / "backgrounds" / "spans" / slug / "right.webp"))
+            shipped(PANELS / slug / "left.webp"), shipped(PANELS / slug / "right.webp"))
 
 
 def build(slug):
@@ -241,7 +249,7 @@ if __name__ == "__main__":
     only_previews = "--previews" in args
     args = [a for a in args if a != "--previews"]
     if only_previews:
-        for slug in args or sorted(p.stem for p in (ROOT / "backgrounds").glob("*.webp")):
+        for slug in args or sorted(p.stem for p in (ROOT / "backgrounds").glob("[0-9][0-9]-*.webp")):
             previews_only(slug)
         sys.exit()
     slugs = args or sorted(p.stem for p in RAW.glob("[0-9][0-9]-*.png")
