@@ -99,7 +99,7 @@ Each wallpaper also comes as a panorama of three monitors, `backgrounds/span-<na
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine wallpapers and their nine panoramas in `backgrounds/`, three-screen previews in `previews/`, the scripts that built the panoramas in `tools/` and these notes. Spanning the panoramas is left to a wallpaper plugin.
+Shipped: `colors.toml`, `icons.theme`, nine wallpapers and their nine panoramas in `backgrounds/`, three-screen previews in `previews/`, the scripts that built the panoramas in `tools/`, the repository's icon in `assets/` and these notes. Spanning the panoramas is left to a wallpaper plugin.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 

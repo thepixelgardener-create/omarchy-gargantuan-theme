@@ -20,9 +20,9 @@ All nine are 3840 × 2160 WebP files at quality 92, like the WebP wallpapers of 
 
 ## Panoramas
 
-Every scene also comes as `span-<name>.webp`: 9840 × 3840, one image of the whole three-monitor layout in README.md at twice its logical size, WebP at quality 88, together 9.4 MB. Each holds three kinds of painting:
+Every scene also comes as `span-<name>.webp`: 9840 × 3840, one image of the whole three-monitor layout in README.md at twice its logical size, WebP at quality 88, together 9.8 MB. Each holds three kinds of painting:
 
-- **The wallpaper** on the main screen's rectangle, pixel for pixel the 4K wallpaper.
+- **The wallpaper** on the main screen's rectangle, at its own size: one pixel of the 4K wallpaper for each pixel of the panorama.
 - **Two cuts of the panels** on the left and right screens' rectangles, 2160 × 3840 and 3840 × 2160: the parts of the scene beyond the wallpaper's left and right edges.
 - **The surroundings**, everything no monitor covers. Left of the main screen that is the rest of the left panel as the generator painted it. Around the main and right screens it is one further painting, made in a last pass, which also fills the strips above and below those screens that neither the wallpaper nor the panels reach, about a quarter of the panorama.
 
@@ -41,7 +41,7 @@ The cuts never contain the strip itself: the main screen shows the wallpaper, so
 1. **Placing.** Each panel, aligned and brightness-matched as above, goes at its canvas's position in the layout, without the few rows and columns the alignment moved it away from (the warp repeats the panel's edge there, which shows as streaks). The wallpaper and the two cuts go on the monitors' rectangles.
 2. **The last painting.** `--canvas` writes the right-hand 16:9 of that panorama, which holds every unpainted strip, at the generator's size with the strips flat grey. Codex painted the grey away with the GAPS prompt in GENERATION.md, one attempt per scene. The generator repaints the whole canvas and lifts its darks, so the result is aligned on the main screen's part, as for the panels, and each colour channel's distribution is mapped back onto the canvas's. It then replaces everything around the main and right screens, not only the strips: one consistent painting leaves no joins between panel and strip. It eases in over 100 pixels from the left panel.
 3. **Tone.** The surroundings still differ a little in tone from the monitors' images. A smooth correction is added to them: next to a monitor it is the difference between the blurred colours on both sides of its edge, elsewhere the smoothest field between those values (Laplace's equation on a 16-pixel grid).
-4. **Joining.** The monitors' images are set into the surroundings by multi-band blending (Burt and Adelson, six levels): fine detail switches at the monitor's edge, broad tone and haze cross it over about a hundred pixels. Along the edges that face the surroundings this changes the monitors' own pixels slightly; between 97.8 % (Star Lifter) and 100 % of them stay within one level of the 4K images.
+4. **Joining.** The monitors' images are set into the surroundings by multi-band blending (Burt and Adelson, six levels): fine detail switches at the monitor's edge, broad tone and haze cross it over about a hundred pixels. Along the edges that face the surroundings this changes the monitors' own pixels slightly; between 97.8 % (Star Lifter) and 100 % of them stay within one level of the 4K images. That is measured before the panorama is saved. Saving compresses it once more, so the main screen's part of a shipped panorama differs from the wallpaper file by WebP's rounding as well: 42 to 45.5 dB PSNR across the nine scenes.
 
 The joins between two monitors' images, the vertical lines at x 2160 and 6000, are left as they are: the bezels lie there.
 
