@@ -35,6 +35,9 @@ and the monitors' images are joined to them by multi-band blending: fine
 detail switches at the monitor's edge, broad tone and haze cross it over
 about a hundred pixels. Away from the edges that face the surroundings, each
 monitor shows its image exactly.
+
+Last, the side panels' light is evened out toward the main screen along the
+two bezels (see meet()); the main screen keeps its wallpaper.
 """
 import importlib.util
 import sys
@@ -292,6 +295,48 @@ def generated_surroundings(slug, shape):
     return layer
 
 
+# The side panels were painted outward from strips of the wallpapers, and the
+# generator did not keep their light: at a bezel the panel can be brighter,
+# darker or tinted against the main screen (the night side of Thalassa meets
+# a sunlit panel). `meet()` evens that out on the side panel only: the colour
+# difference across each bezel, row by row and smoothed, is added to the
+# panel at the bezel and fades out over part of its width. The main screen
+# keeps its wallpaper as it is, and nothing is moved or redrawn.
+SEAMS = (                          # bezel x, which side is the panel, the rows both screens share
+    (1080, -1, (480, 1560)),
+    (3000, +1, (550, 1560)),
+)
+REACH = {-1: 500, +1: 800}         # logical pixels over which the correction fades out
+LIMIT = 24                         # levels, the most the correction changes a pixel
+
+
+def meet(image):
+    out = image.astype(np.float32)
+    height = image.shape[0]
+    ys = np.arange(height, dtype=np.float32)
+    for lx, side, rows in SEAMS:
+        x, band = px(lx), px(48)
+        main = out[:, x:x + band] if side < 0 else out[:, x - band:x]
+        panel = out[:, x - band:x] if side < 0 else out[:, x:x + band]
+        # Regional light only: medians resist a star or a flare, a wide blur and a cap
+        # keep content that truly differs across the bezel (a flare on one side only) as it is.
+        diff = np.median(main, axis=1) - np.median(panel, axis=1)          # per row, per channel
+        diff = cv2.GaussianBlur(diff[:, None, :], (1, 0), sigmaX=0, sigmaY=px(160))[:, 0, :]
+        diff = np.clip(diff, -LIMIT, LIMIT)
+        fade = px(120)
+        y0, y1 = px(rows[0]), px(rows[1])
+        t = np.clip(np.minimum(ys - (y0 - fade), (y1 + fade) - ys) / fade, 0, 1)
+        diff *= (t * t * (3 - 2 * t))[:, None]
+        reach = px(REACH[side])
+        cols = np.arange(x - reach, x) if side < 0 else np.arange(x, x + reach)
+        d = (x - 1 - cols) if side < 0 else (cols - x)
+        w = np.clip(1 - d / reach, 0, 1)
+        w = w * w * (3 - 2 * w)
+        out[:, cols[0]:cols[-1] + 1] += diff[:, None, :] * w[None, :, None]
+        print(f"  bezel at x {x}: panel evened out by up to {np.abs(diff).max():.0f} levels")
+    return np.clip(out + 0.5, 0, 255).astype(np.uint8)
+
+
 def assemble(slug):
     print(slug)
     pano, covered, sharp = painted(slug)
@@ -322,7 +367,7 @@ def assemble(slug):
     inner[monitors] = pano[monitors]
     joined = multiband(inner, outer, monitors.astype(np.float32))
     del inner, outer
-    image = Image.fromarray(np.clip(joined + 0.5, 0, 255).astype(np.uint8))
+    image = Image.fromarray(meet(np.clip(joined + 0.5, 0, 255).astype(np.uint8)))
     del joined
     shown = np.asarray(image)[monitors].astype(np.int16) - pano[monitors]
     print(f"  monitors: {100 * (np.abs(shown).max(axis=1) <= 1).mean():.1f} % of pixels exact (within 1 level)")
