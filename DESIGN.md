@@ -95,7 +95,7 @@ Every one of the fourteen standard and bright terminal colors reaches at least 6
 
 ## Panoramas
 
-Each wallpaper also comes as a panorama of three monitors, `backgrounds/span-<name>.webp`: the wallpaper itself on the main screen, and the scene continuing past the bezels onto a portrait screen on the left and a 16:9 screen on the right. Omarchy's own background service shows one image on every screen, so the panoramas need a tool that spans one image across them, such as the [Station](https://github.com/Yakumy/Station) plugin. Without one the theme is complete, and the nine plain wallpapers, which sort first, are what a single screen shows. README.md explains the layout.
+Each scene comes as one continuous panorama, `backgrounds/span-<name>.webp`, and a centred single-screen crop. The panorama is processed uniformly, without monitor-specific panels or joins. Omarchy's own background service shows one image on every screen, so the panoramas need a tool that spans one image across them, such as the [Station](https://github.com/Yakumy/Station) plugin. The nine plain wallpapers sort first and work independently of a spanning plugin. README.md shows an example three-monitor layout.
 
 ## What the theme ships, and what it leaves to Omarchy
 
@@ -110,4 +110,4 @@ Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, b
 3. Push, then install from the clean URL: `omarchy theme install <repo-url>`.
 4. Look at a terminal with `git diff`, Neovim, btop, the Omarchy menu, a notification and the lock screen.
 5. With Station in Span mode, step through all nine panoramas on three screens and check that every scene lines up at the bezels; then frame one off-centre and zoomed out, and check the gaps.
-6. Redraw the previews with `tools/build.py --previews` and the panoramas with `tools/panorama.py` after any wallpaper or panel changes.
+6. Export continuous artwork with `tools/coherent-export.py`; derive previews from those panorama files. The older panel assembly scripts are historical and must not rebuild the current artwork.

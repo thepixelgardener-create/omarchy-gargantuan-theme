@@ -34,7 +34,7 @@ omarchy plugin add https://github.com/Yakumy/Station.git --enable
 
 Click the Station logo in the bar, open **Wallpaper**, choose **Span** and leave **Follow Omarchy wallpaper** on. Then pick a `span-` wallpaper with **Super + Ctrl + Space**, and Station spreads it over your monitors. To frame it differently, drag the monitor group in the Wallpaper tab or scroll to zoom; Station remembers the framing for each wallpaper.
 
-**The layout.** The panoramas were composed for a portrait screen on the left, a 16:9 main screen in the middle and a 16:9 screen on the right, as on the setup they were made on, in Hyprland's logical pixels:
+**The preview layout.** The examples below use a portrait screen on the left, a 16:9 main screen in the middle and a 16:9 screen on the right, in Hyprland's logical pixels:
 
 | Screen | Logical size | Position |
 |---|---|---|
@@ -42,16 +42,16 @@ Click the Station logo in the bar, open **Wallpaper**, choose **Span** and leave
 | Main | 1920 × 1080 (a 4K screen at scale 2) | 1080, 480 |
 | Right | 1920 × 1080 | 3000, 550 |
 
-Together that is 4920 × 1920, and each panorama is twice that, 9840 × 3840, the main screen's pixel density. On this layout, at Station's default framing, every monitor shows the picture made for it: the 4K wallpaper on the main screen and the scene's continuation on each side, meeting at the bezels. On any other arrangement Station covers your monitors with the panorama, so the scene still runs across them; drag and zoom to choose the part you like.
+Together that is 4920 × 1920, and each panorama is twice that, 9840 × 3840, the main screen's pixel density. Each panorama is one continuous composition with uniform processing across its full area. Station places your monitors over that scene; drag and zoom to choose the framing for your arrangement. The separate 4K wallpaper is a centred crop and differs from the main monitor's view in Span mode.
 
 ## Wallpapers
 
-Nine scenes, the theme's namesake first and then a climb up the Kardashev scale, from a star in a bottle to a gate between galaxies. Click a preview for the 4K original; each scene's panorama is `span-` and the same name.
+Nine scenes, the theme's namesake first and then a journey from a star in a bottle to a gate between galaxies. Click a preview for the 4K export; each scene's panorama is `span-` and the same name.
 
 | Gargantuan | Fusion |
 | --- | --- |
 | [![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)](backgrounds/01-gargantuan.webp) | [![Fusion: a band of glowing plasma floating through the tiled tunnel of a fusion reactor](backgrounds/02-fusion.webp)](backgrounds/02-fusion.webp) |
-| A supermassive black hole. Gravity bends the far side of its disk over and under the shadow, and the side rushing toward you burns brighter. | A star in a bottle: a band of hydrogen plasma floating through the inside of a fusion reactor, whose tiled walls curve away like an endless tunnel. |
+| A supermassive black hole, its shadow surrounded by a lensed disk of incandescent gas. | A star in a bottle: violet plasma inside a vast toroidal chamber, surrounded by tiled walls and intricate machinery. |
 
 | Core | Thalassa |
 | --- | --- |
@@ -60,13 +60,13 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 
 | Tether | Giant |
 | --- | --- |
-| [![Tether: a space elevator rising from an ocean world at sunrise](backgrounds/05-elevator.webp)](backgrounds/05-elevator.webp) | [![Giant: a ringed gas giant seen from inside its asteroid belt](backgrounds/06-giant.webp)](backgrounds/06-giant.webp) |
-| A road to orbit: a hair-fine space elevator climbing out of the atmosphere at sunrise. | A ringed gas giant seen from inside its own asteroid belt. |
+| [![Tether: an orbital station and elevator above a blue planet](backgrounds/05-elevator.webp)](backgrounds/05-elevator.webp) | [![Giant: a ringed gas giant seen from among rocky debris](backgrounds/06-giant.webp)](backgrounds/06-giant.webp) |
+| A road to orbit: a space elevator linking a monumental orbital station to the world below. | A ringed gas giant seen from among the rocks of its surrounding debris field. |
 
 | Star Lifter | Dyson |
 | --- | --- |
 | [![Star Lifter: machines pulling a column of plasma out of a star](backgrounds/07-lifter.webp)](backgrounds/07-lifter.webp) | [![Dyson: a Dyson sphere under construction, starlight escaping through its gaps](backgrounds/08-dyson.webp)](backgrounds/08-dyson.webp) |
-| Harvesting a star: a ring of machines pulls a twisting column of plasma out of its surface. | A star being enclosed: a Dyson sphere two-thirds built, its light escaping through the gaps. |
+| Harvesting a star: an orbital collector draws a column of plasma from its surface. | A star being enclosed: an unfinished Dyson sphere, its light escaping through gaps in the hexagonal shell. |
 
 | Gate | |
 | --- | --- |
@@ -88,7 +88,7 @@ Each scene across three screens, as Station spans its panorama over the layout a
 
 ### Resolution and displays
 
-The wallpapers are **3840 × 2160** and the panoramas **9840 × 3840**, upscaled from the generator's 1672 × 941 and 1024 × 1536 images. Ultrawide, 16:10 and portrait screens crop the wallpapers; the subject of each sits near the middle. [ASSETS.md](ASSETS.md) records dimensions, provenance and how the panoramas were put together.
+The wallpapers are **3840 × 2160** and the panoramas **9840 × 3840**, uniformly AI-upscaled from continuous panoramic sources of approximately 2007 × 783 pixels. These are export dimensions, not native capture resolution. Ultrawide, 16:10 and portrait screens crop the wallpapers; the subject of each sits near the middle. [ASSETS.md](ASSETS.md) records dimensions, provenance and processing.
 
 ## Palette checks
 
@@ -106,6 +106,6 @@ The palette is held to 30 checks covering contrast, simulated red–green separa
 
 ## Credits and license
 
-The 36 images were generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the scripts and the written notes are original work.
+The artwork was generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the scripts and the written notes are original work.
 
 Released under the [MIT license](LICENSE).
