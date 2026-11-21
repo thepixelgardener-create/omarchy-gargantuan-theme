@@ -95,18 +95,17 @@ Every one of the fourteen standard and bright terminal colors reaches at least 6
 
 ## Wallpapers
 
-The theme ships one set of nine seamless **9840 × 3840** panoramic wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`. Each scene keeps its main subject near the middle so standard 16:9 and 16:10 displays frame it cleanly, while ultrawides and multi-monitor setups reveal the full continuation on both sides.
+The theme ships one set of nine single-pass **3840 × 2160** 4K wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`. Each scene keeps its main subject near the middle against quiet deep space so 16:9, 16:10, ultrawide and portrait displays all frame cleanly.
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine panoramic wallpapers in `backgrounds/`, the scripts that built them in `tools/`, the repository's icon in `assets/` and these notes.
+Shipped: `colors.toml`, `icons.theme`, nine 4K wallpapers in `backgrounds/`, the build and local-install scripts in `tools/`, the repository's icon in `assets/` and these notes.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 
 ## Release checklist
 
 1. Measure the palette again: contrast, red–green separation and the wallpaper overlay bounds still meet the targets above.
-2. Inspect the wallpapers and their provenance in ASSETS.md.
+2. Inspect the wallpapers at full 4K resolution and check their provenance in ASSETS.md.
 3. Push, then install from the clean URL: `omarchy theme install <repo-url>`.
 4. Look at a terminal with `git diff`, Neovim, btop, the Omarchy menu, a notification and the lock screen.
-5. Check all nine panoramas both full-width and at 16:9 center crop after any panel or stitching changes (`tools/panorama.py`).

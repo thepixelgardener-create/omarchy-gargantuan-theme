@@ -2,7 +2,7 @@
 
 # Gargantuan
 
-A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine ultra-wide panoramic wallpapers of colossal structures in space.
+A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine 4K wallpapers of colossal structures in space.
 
 ![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)
 
@@ -24,7 +24,7 @@ Omarchy installs and activates the theme, generating application colors from `co
 
 ## Wallpapers
 
-Nine scenes, the theme's namesake first and then a climb up the Kardashev scale, from a star in a bottle to a gate between galaxies. Click any image for the full **9840 × 3840** panoramic original.
+Nine scenes, the theme's namesake first and then a climb up the Kardashev scale, from a star in a bottle to a gate between galaxies. Click any image for the full **3840 × 2160** 4K original.
 
 | Gargantuan | Fusion |
 | --- | --- |
@@ -53,7 +53,7 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 
 ### Resolution and displays
 
-Every wallpaper is a single seamless **9840 × 3840** WebP panorama. On a 16:9, 16:10 or portrait display, Omarchy crops cleanly around the subject in the middle; on ultrawides and multi-monitor setups, the extra width lets the scene continue across the full span. [ASSETS.md](ASSETS.md) records dimensions, provenance and how the panoramas were stitched.
+Every wallpaper is a single continuous **3840 × 2160** (16:9) WebP image with no stitching or seams. Ultrawide, 16:10 and portrait screens crop cleanly around the central subject. [ASSETS.md](ASSETS.md) records dimensions, provenance and upscaling.
 
 ## Palette checks
 
@@ -71,6 +71,6 @@ The palette is held to 30 checks covering contrast, simulated red–green separa
 
 ## Credits and license
 
-The 36 source images were generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the scripts and the written notes are original work.
+The wallpapers are AI-generated; [ASSETS.md](ASSETS.md) and [GENERATION.md](GENERATION.md) record their provenance, prompts and upscaling. The palette, the scripts and the written notes are original work.
 
 Released under the [MIT license](LICENSE).
