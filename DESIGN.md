@@ -93,13 +93,13 @@ Every one of the fourteen standard and bright terminal colors reaches at least 6
 - The active-border gradient also reaches the shell's popups, notifications, menus and lock screen, because Omarchy uses the Hyprland border for them, so red appears in borders that are not errors.
 - Blue and magenta are the closest signal pair. Both stay well clear of the threshold, and they keep their distinct physical sources.
 
-## Panoramas
+## Wallpapers
 
-Each wallpaper also comes as a panorama of three monitors, `backgrounds/span-<name>.webp`: the wallpaper itself on the main screen, and the scene continuing past the bezels onto a portrait screen on the left and a 16:9 screen on the right. Omarchy's own background service shows one image on every screen, so the panoramas need a tool that spans one image across them, such as the [Station](https://github.com/Yakumy/Station) plugin. Without one the theme is complete, and the nine plain wallpapers, which sort first, are what a single screen shows. README.md explains the layout.
+The theme ships one set of nine seamless **9840 × 3840** panoramic wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`. Each scene keeps its main subject near the middle so standard 16:9 and 16:10 displays frame it cleanly, while ultrawides and multi-monitor setups reveal the full continuation on both sides.
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine wallpapers and their nine panoramas in `backgrounds/`, three-screen previews in `previews/`, the scripts that built the panoramas in `tools/`, the repository's icon in `assets/` and these notes. Spanning the panoramas is left to a wallpaper plugin.
+Shipped: `colors.toml`, `icons.theme`, nine panoramic wallpapers in `backgrounds/`, the scripts that built them in `tools/`, the repository's icon in `assets/` and these notes.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 
@@ -109,5 +109,4 @@ Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, b
 2. Inspect the wallpapers and their provenance in ASSETS.md.
 3. Push, then install from the clean URL: `omarchy theme install <repo-url>`.
 4. Look at a terminal with `git diff`, Neovim, btop, the Omarchy menu, a notification and the lock screen.
-5. With Station in Span mode, step through all nine panoramas on three screens and check that every scene lines up at the bezels; then frame one off-centre and zoomed out, and check the gaps.
-6. Redraw the previews with `tools/build.py --previews` and the panoramas with `tools/panorama.py` after any wallpaper or panel changes.
+5. Check all nine panoramas both full-width and at 16:9 center crop after any panel or stitching changes (`tools/panorama.py`).

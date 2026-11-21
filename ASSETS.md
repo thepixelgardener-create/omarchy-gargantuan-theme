@@ -16,61 +16,47 @@ The nine wallpapers are AI-generated, painted by the image tool built into OpenA
 | `08-dyson.webp` | A Dyson sphere two-thirds built around a yellow-white star, light escaping through its gaps, a construction swarm in orbit |
 | `09-gate.webp` | A ring-shaped gate whose opening folds space into a tunnel toward a distant spiral galaxy, a small ship approaching |
 
-All nine are 3840 × 2160 WebP files at quality 92, like the WebP wallpapers of the built-in Omarchy themes, together 5.7 MB.
+All nine are shipped as a single set of seamless **9840 × 3840** WebP panoramas at quality 88, together 9.7 MB.
 
-## Panoramas
+## How the panoramas are assembled
 
-Every scene also comes as `span-<name>.webp`: 9840 × 3840, one image of the whole three-monitor layout in README.md at twice its logical size, WebP at quality 88, together 9.9 MB. Each holds three kinds of painting:
+The generator returns at most 1672 × 941 and cannot paint a 9840 × 3840 panorama in one pass. Each scene was therefore painted outward from its centre panel across a 4920 × 1920 logical canvas at 2× density, as GENERATION.md describes: left and right canvases each carried a 480-logical-px overlap strip of the centre image, and a final gap pass painted the strips above and below the centre and right regions.
 
-- **The wallpaper** on the main screen's rectangle, at its own size: one pixel of the 4K wallpaper for each pixel of the panorama.
-- **Two cuts of the panels** on the left and right screens' rectangles, 2160 × 3840 and 3840 × 2160: the parts of the scene beyond the wallpaper's left and right edges.
-- **The surroundings**, everything no monitor covers. Left of the main screen that is the rest of the left panel as the generator painted it. Around the main and right screens it is one further painting, made in a last pass, which also fills the strips above and below those screens that neither the wallpaper nor the panels reach, about a quarter of the panorama.
+`tools/build.py` aligns, colour-matches, crops and upscales the centre (`3840 × 2160`), left (`2160 × 3840`) and right (`3840 × 2160`) panels into `work/panels/<scene>/`:
 
-On the layout the panoramas were made for, at Station's default framing, every monitor shows its 4K image; the surroundings appear when the framing moves or the monitors are arranged differently.
+1. **Coarse alignment.** The generator repaints the whole canvas, its copy of the strip included, and that copy can drift by a few pixels or change scale slightly. SIFT features in the strip are matched against the original strip and a similarity transform (shift, scale, rotation) fitted with RANSAC moves the painted panel back into register. Where the strip is too dark for features, the shift is found by phase correlation.
+2. **Coarse brightness.** The brightness of the original and painted strips is compared row by row near the join; where a single uniform gain brings them closer, it is applied.
 
-The generator returns at most 1672 × 941 and cannot paint the whole panorama, so the panels were painted outward from the wallpapers, as GENERATION.md describes: each canvas carried a strip from the edge of the wallpaper, and the tool painted the rest of the canvas around it. `tools/build.py` then made the cuts for the monitors:
+`tools/panorama.py` then stitches all pieces into one seamless `backgrounds/<scene>.webp`:
 
-1. **Alignment.** The generator repaints the whole canvas, its copy of the strip included, and that copy can drift by a few pixels or change scale slightly. SIFT features in the strip are matched against the original strip and a similarity transform (shift, scale, rotation) fitted with RANSAC moves the painted panel back into register. Where the strip is too dark for features, the shift is found by phase correlation of the strip as a whole. The largest corrections were a 30 px shift (Giant's right panel) and a 1.7 % rescale (Tether's left panel); most were under 5 px.
-2. **Brightness.** The brightness of the original and the painted strip is compared row by row in the 16 columns next to the seam, the part the eye compares across the bezel. If one gain, the same for all three channels so hues and black space are kept, brings them clearly closer, it is applied; it was for five of the eighteen panels, by 0.85 to 1.12.
-3. **Cut.** Each cut is exactly the area its screen covers in the layout, so the content at its edge is what continues beyond the wallpaper's edge.
-
-The cuts never contain the strip itself: the main screen shows the wallpaper, so whatever the generator did to its copy is cut away.
-
-`tools/panorama.py` puts each panorama together:
-
-1. **Placing.** Each panel, aligned and brightness-matched as above, goes at its canvas's position in the layout, without the few rows and columns the alignment moved it away from (the warp repeats the panel's edge there, which shows as streaks). The wallpaper and the two cuts go on the monitors' rectangles.
-2. **The last painting.** `--canvas` writes the right-hand 16:9 of that panorama, which holds every unpainted strip, at the generator's size with the strips flat grey. Codex painted the grey away with the GAPS prompt in GENERATION.md, one attempt per scene. The generator repaints the whole canvas and lifts its darks, so the result is aligned on the main screen's part, as for the panels, and each colour channel's distribution is mapped back onto the canvas's. It then replaces everything around the main and right screens, not only the strips: one consistent painting leaves no joins between panel and strip. It eases in over 100 pixels from the left panel.
-3. **Tone.** The surroundings still differ a little in tone from the monitors' images. A smooth correction is added to them: next to a monitor it is the difference between the blurred colours on both sides of its edge, elsewhere the smoothest field between those values (Laplace's equation on a 16-pixel grid).
-4. **Joining.** The monitors' images are set into the surroundings by multi-band blending (Burt and Adelson, six levels): fine detail switches at the monitor's edge, broad tone and haze cross it over about a hundred pixels. Along the edges that face the surroundings this changes the monitors' own pixels slightly; between 97.8 % (Star Lifter) and 100 % of them stay within one level of the 4K images (before the bezel step below, which changes the side screens on purpose). That is measured before the panorama is saved. Saving compresses it once more, so the main screen's part of a shipped panorama differs from the wallpaper file by WebP's rounding as well: 42 to 45.5 dB PSNR across the nine scenes.
-
-5. **Bezels.** Where two monitors' images meet, at x 2160 and 6000, the generator often painted the panel in a different light from the wallpaper: the night side of Thalassa meets a sunlit panel, the sky beside Core's limb is lighter on one side. Along each of these lines the colour difference is measured row by row from the medians of a 96-pixel band on either side, smoothed over about 300 rows and capped at 24 levels, and added to the side panel: fully at the bezel, fading to nothing over 1000 pixels of the left screen and 1600 of the right. The main screen keeps the wallpaper. Only light is evened out. Where the panel shows different things from the wallpaper (Star Lifter's flare, Giant's cloud bands), the step stays, and nothing is moved: across the bezels the lines themselves, horizons, limbs, rings and the disk, are already within about 10 logical pixels of each other.
+1. **Panel layers.** Each side's upscaled panel is placed onto its wider aligned raw layer (which includes the 960-pixel overlap with the centre panel), feathering the 24-pixel inner edge so sub-pixel crop rounding never shows.
+2. **Fine overlap registration.** Inside each 960-pixel overlap, a two-pass coarse-to-fine smooth optical-flow warp (DIS optical flow weighted by local edge gradient) aligns horizons, planetary limbs, rings and disks to the centre panel, decaying smoothly to zero across the side panel.
+3. **Smooth lighting match.** Each side panel's exposure and colour are matched to the centre panel along the overlap with a smooth per-row multiplicative gain and a small dark-gated residual bias (so deep space stays dark), fading smoothly across the side panel.
+4. **Seam and multi-band join.** A dynamic-programming minimum-error seam (penalising bright isolated peaks so stars and suns are never split) is found through each overlap corridor, and the centre and side panels are joined with a 7-level Burt–Adelson multi-band blend.
+5. **Surroundings.** The final gap painting (`work/raw/<scene>-gaps.png`) is aligned and quantile-mapped onto the right-hand 16:9 of the canvas, evened out toward the stitched panels with a harmonic tone membrane (Laplace's equation on a 16-pixel grid), and joined with a 6-level multi-band blend.
 
 Four left panels were rejected at review because the generator painted the main subject a second time (Core, Giant, Star Lifter and Gate) and were painted again with stricter prompts. The rejected images are not shipped.
 
 ## Upscaling
 
-The generator returned the wallpapers at 1672 × 941. The shown part of each panel was 1338 × 753 (right) and 709 × 1260 (left) of the generator's pixels. The wallpapers and the monitors' cuts were enlarged 4× with Real-ESRGAN (`realesrgan-x4plus`, realesrgan-ncnn-vulkan 0.2.5.0), resized to the target with Lanczos, and blended 65 % Real-ESRGAN with 35 % of a plain Lanczos enlargement of the original, the same method as Farbenlehre's wallpapers: it keeps Real-ESRGAN's sharper edges without its smoothed, plastic surfaces. The upscaled detail is synthesized, not recovered: fine texture at 4K is the upscaler's interpretation of the original. Outside the monitors, the left panel's outer part (about 3×) and the last painting (about 4×) are plain Lanczos enlargements and softer; they are the edge of the frame.
+The generator returned the centre and right images at 1672 × 941 and the left images at 1024 × 1536. The three main panels were enlarged 4× with Real-ESRGAN (`realesrgan-x4plus`, realesrgan-ncnn-vulkan 0.2.5.0), resized to target with Lanczos, and blended 65 % Real-ESRGAN with 35 % plain Lanczos enlargement: it keeps Real-ESRGAN's sharper edges without smoothed, plastic surfaces. The upscaled detail is synthesized, not recovered. Outside the main panels, the outer edges and gap painting are plain Lanczos enlargements.
 
 ## Cropping and overlays
 
-On a 16:9 screen every wallpaper is shown whole. Other shapes crop it:
+Each panorama is 9840 × 3840 (2.56:1), with the primary subject near the middle so standard 16:9, 16:10, 3:2, ultrawide and multi-monitor displays all frame cleanly:
 
-- **Gargantuan** keeps the shadow and photon ring in the middle; 21:9 trims the lensed arcs above and below, 16:10 and 3:2 trim the outer ends of the disk.
-- **Fusion** runs its plasma band straight across the middle; every crop keeps it, and 21:9 trims the ports above and below.
-- **Core** puts the planet right of centre with dark space on the left; 3:2 cuts into the planet's lit limb on the right.
-- **Thalassa** fills the lower half with the ocean; 21:9 trims the sky, 3:2 trims the planet's curve at both sides.
-- **Tether** keeps the tether left of centre and the horizon across the middle; every crop keeps both.
-- **Giant** puts the planet top right and asteroids along the bottom; 21:9 trims the top of the planet.
-- **Star Lifter** keeps the plasma column in the middle and the star along the bottom; 21:9 trims the collector at the top.
-- **Dyson** keeps the sphere in the middle; every crop keeps all of it.
-- **Gate** puts the gate right of centre; 3:2 trims the gate's outer rim on the right.
+- **Gargantuan** keeps the shadow, photon ring and lensed arcs in the middle with the disk running out to both sides.
+- **Fusion** runs its plasma band straight across the middle through the curving reactor tunnel.
+- **Core** puts the cut-open planet near the centre with deep space, embers and a distant moon to the sides.
+- **Thalassa** fills the lower half with the endless ocean and spiral storms under dark space.
+- **Tether** keeps the space elevator and sunrise horizon across the middle with clouds curving away on both sides.
+- **Giant** frames the ringed gas giant and asteroid field across the middle with the distant star to the left.
+- **Star Lifter** keeps the plasma column and collector in the middle above the curved solar surface.
+- **Dyson** keeps the partially enclosed star in the middle with the orbital swarm rings extending to both sides.
+- **Gate** frames the ring gate and folded galaxy tunnel near the centre in dark space.
 
-Lock screen and launcher text sits in the middle of the screen and lands on the subject in most of these. The overlay checks in DESIGN.md use black and white bounds rather than samples from the artwork, so they hold for every wallpaper and panorama at the modeled opacity.
-
-## Previews
-
-`previews/<name>.webp` show each scene across three screens at a quarter of their logical size, placed as in the layout table in README.md, with dark bezels between them: what Station shows of a panorama on that layout. They are drawn from the wallpapers and the monitors' cuts by `tools/build.py --previews`.
+Lock screen and launcher text sits in the middle of the screen and lands on the subject in most of these. The overlay checks in DESIGN.md use black and white bounds rather than samples from the artwork, so they hold for every wallpaper at the modeled opacity.
 
 ## License
 
-The repository's MIT license covers the palette, the notes, the scripts and the images. The 36 images are AI-generated.
+The repository's MIT license covers the palette, the notes, the scripts and the images. The 36 source images are AI-generated.

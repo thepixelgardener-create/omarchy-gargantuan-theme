@@ -2,11 +2,9 @@
 
 # Gargantuan
 
-A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine wallpapers of colossal structures in space. Every scene also comes as a panorama of three monitors, so with a spanning wallpaper tool such as [Station](https://github.com/Yakumy/Station) it runs across all of them, continuing past the bezels.
+A dark theme for [Omarchy](https://omarchy.org) about the largest things a civilisation could build or meet. Deep-space surfaces, starlight text and an amber accent taken from the accretion disk of a black hole, with nine ultra-wide panoramic wallpapers of colossal structures in space.
 
-![Gargantuan across three monitors: a black hole's accretion disk running from a portrait screen through the main screen to a third](previews/01-gargantuan.webp)
-
-*The black hole's panorama across three screens, as Station spans it: each monitor shows the part of the scene at its position.*
+![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)
 
 ## Install
 
@@ -22,31 +20,11 @@ Or straight from a terminal:
 omarchy theme install https://github.com/thepixelgardener-create/omarchy-gargantuan-theme
 ```
 
-Omarchy installs and activates the theme, generating application colors from `colors.toml`. Choose a wallpaper with **Super + Ctrl + Space**. The nine 4K wallpapers come first; the nine panoramas after them, named `span-…`, are for several monitors.
-
-## Across three monitors
-
-Omarchy shows the same wallpaper on every screen. Each scene therefore also comes as one panorama of a whole three-monitor layout, `backgrounds/span-<name>.webp`, for a wallpaper tool that spreads a single image across all screens. The [Station](https://github.com/Yakumy/Station) plugin does that:
-
-```sh
-omarchy plugin add https://github.com/Yakumy/Station.git --enable
-```
-
-Click the Station logo in the bar, open **Wallpaper**, choose **Span** and leave **Follow Omarchy wallpaper** on. Then pick a `span-` wallpaper with **Super + Ctrl + Space**, and Station spreads it over your monitors. To frame it differently, drag the monitor group in the Wallpaper tab or scroll to zoom; Station remembers the framing for each wallpaper.
-
-**The layout.** The panoramas were composed for a portrait screen on the left, a 16:9 main screen in the middle and a 16:9 screen on the right, as on the setup they were made on, in Hyprland's logical pixels:
-
-| Screen | Logical size | Position |
-|---|---|---|
-| Left, portrait | 1080 × 1920 | 0, 0 |
-| Main | 1920 × 1080 (a 4K screen at scale 2) | 1080, 480 |
-| Right | 1920 × 1080 | 3000, 550 |
-
-Together that is 4920 × 1920, and each panorama is twice that, 9840 × 3840, the main screen's pixel density. On this layout, at Station's default framing, every monitor shows the picture made for it: the 4K wallpaper on the main screen and the scene's continuation on each side, meeting at the bezels. On any other arrangement Station covers your monitors with the panorama, so the scene still runs across them; drag and zoom to choose the part you like.
+Omarchy installs and activates the theme, generating application colors from `colors.toml`. Cycle wallpapers with **Super + Ctrl + Space**.
 
 ## Wallpapers
 
-Nine scenes, the theme's namesake first and then a climb up the Kardashev scale, from a star in a bottle to a gate between galaxies. Click a preview for the 4K original; each scene's panorama is `span-` and the same name.
+Nine scenes, the theme's namesake first and then a climb up the Kardashev scale, from a star in a bottle to a gate between galaxies. Click any image for the full **9840 × 3840** panoramic original.
 
 | Gargantuan | Fusion |
 | --- | --- |
@@ -73,22 +51,9 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 | [![Gate: a ring-shaped gate showing a distant galaxy through folded space](backgrounds/09-gate.webp)](backgrounds/09-gate.webp) | |
 | A gate between galaxies: through the ring, space folds into a tunnel to a distant spiral. | |
 
-### The panoramas
-
-Each scene across three screens, as Station spans its panorama over the layout above.
-
-![Fusion across three monitors](previews/02-fusion.webp)
-![Core across three monitors](previews/03-core.webp)
-![Thalassa across three monitors](previews/04-ocean.webp)
-![Tether across three monitors](previews/05-elevator.webp)
-![Giant across three monitors](previews/06-giant.webp)
-![Star Lifter across three monitors](previews/07-lifter.webp)
-![Dyson across three monitors](previews/08-dyson.webp)
-![Gate across three monitors](previews/09-gate.webp)
-
 ### Resolution and displays
 
-The wallpapers are **3840 × 2160** and the panoramas **9840 × 3840**, upscaled from the generator's 1672 × 941 and 1024 × 1536 images. Ultrawide, 16:10 and portrait screens crop the wallpapers; the subject of each sits near the middle. [ASSETS.md](ASSETS.md) records dimensions, provenance and how the panoramas were put together.
+Every wallpaper is a single seamless **9840 × 3840** WebP panorama. On a 16:9, 16:10 or portrait display, Omarchy crops cleanly around the subject in the middle; on ultrawides and multi-monitor setups, the extra width lets the scene continue across the full span. [ASSETS.md](ASSETS.md) records dimensions, provenance and how the panoramas were stitched.
 
 ## Palette checks
 
@@ -106,6 +71,6 @@ The palette is held to 30 checks covering contrast, simulated red–green separa
 
 ## Credits and license
 
-The 36 images were generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the scripts and the written notes are original work.
+The 36 source images were generated with the image tool built into OpenAI's Codex; [GENERATION.md](GENERATION.md) preserves every prompt and [ASSETS.md](ASSETS.md) their provenance and processing. The palette, the scripts and the written notes are original work.
 
 Released under the [MIT license](LICENSE).

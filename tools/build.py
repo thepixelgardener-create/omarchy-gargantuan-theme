@@ -1,24 +1,22 @@
 #!/usr/bin/env python3
-"""Turn the generator's raw images into the shipped wallpapers.
+"""Turn the generator's raw images into upscaled panels for tools/panorama.py.
 
     uv run --no-project --with numpy --with pillow --with opencv-python-headless \
         python -I tools/build.py [NN-slug ...]
 
 For each scene with images in work/raw/:
 
-    NN-slug.png        -> backgrounds/NN-slug.webp           3840 x 2160
+    NN-slug.png        -> work/panels/NN-slug/main.webp      3840 x 2160
     NN-slug-right.png  -> work/panels/NN-slug/right.webp     3840 x 2160
     NN-slug-left.png   -> work/panels/NN-slug/left.webp      2160 x 3840
-    (all three)        -> previews/NN-slug.webp              the three screens side by side
 
-The panels are not shipped on their own: tools/panorama.py places them with
-the wallpaper in one panorama per scene, backgrounds/span-NN-slug.webp.
-
-`--previews [NN-slug ...]` only redraws the previews from the shipped files.
+The panels are not shipped on their own: tools/panorama.py stitches them with
+the wider raw panels and surroundings into one seamless 9840 x 3840 wallpaper
+per scene, backgrounds/NN-slug.webp.
 
 The side panels were painted around a strip of the main image (see
 tools/span-canvas.py). Each is aligned to that strip by feature matching, its
-colour matched to the strip, then cut to the screen it is shown on. Upscaling
+colour matched to the strip, then cut to its target rectangle. Upscaling
 blends Real-ESRGAN (realesrgan-x4plus) with a plain Lanczos enlargement, 65/35,
 like Farbenlehre's wallpapers.
 """
@@ -209,50 +207,18 @@ def build_side(slug, side):
     return img
 
 
-def preview(slug, center, left, right):
-    """previews/<slug>.webp: the three screens at their logical positions, 1/4 scale, with bezels."""
-    scale = 0.25
-    pw, ph = round(4920 * scale) + 40, round(1920 * scale) + 40
-    sheet = Image.new("RGB", (pw, ph), (10, 13, 22))
-    for img, (lx, ly, lw, lh) in ((left, (0, 0, 1080, 1920)),
-                                  (center, (1080, 480, 1920, 1080)),
-                                  (right, (3000, 550, 1920, 1080))):
-        box = (20 + round(lx * scale), 20 + round(ly * scale))
-        size = (round(lw * scale) - 6, round(lh * scale) - 6)
-        tile = Image.new("RGB", size, (40, 40, 40)) if img is None else Image.fromarray(img).resize(size, Image.LANCZOS)
-        sheet.paste(tile, (box[0] + 3, box[1] + 3))
-    path = ROOT / "previews" / f"{slug}.webp"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    sheet.save(path, "WEBP", quality=88, method=6)
-    print(f"  {path.relative_to(ROOT)}")
-
-
-def previews_only(slug):
-    """Redraw a preview from the shipped wallpaper and panels, without upscaling anything."""
-    shipped = lambda p: load(p) if p.exists() else None
-    preview(slug, load(ROOT / "backgrounds" / f"{slug}.webp"),
-            shipped(PANELS / slug / "left.webp"), shipped(PANELS / slug / "right.webp"))
-
-
 def build(slug):
     print(slug)
     main = load(RAW / f"{slug}.png")
     print(f"  main {main.shape[1]}x{main.shape[0]}")
     center = upscale(main, (3840, 2160), slug)
-    save_webp(center, ROOT / "backgrounds" / f"{slug}.webp")
-    left, right = build_side(slug, "left"), build_side(slug, "right")
-    preview(slug, center, left, right)
+    save_webp(center, PANELS / slug / "main.webp")
+    build_side(slug, "left")
+    build_side(slug, "right")
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    only_previews = "--previews" in args
-    args = [a for a in args if a != "--previews"]
-    if only_previews:
-        for slug in args or sorted(p.stem for p in (ROOT / "backgrounds").glob("[0-9][0-9]-*.webp")):
-            previews_only(slug)
-        sys.exit()
-    slugs = args or sorted(p.stem for p in RAW.glob("[0-9][0-9]-*.png")
-                           if not p.stem.endswith(("-left", "-right")))
+    slugs = sys.argv[1:] or sorted(p.stem for p in RAW.glob("[0-9][0-9]-*.png")
+                                   if not p.stem.endswith(("-left", "-right")))
     for slug in slugs:
         build(slug)
