@@ -73,13 +73,11 @@ This is the second version. The first showed a bright violet ribbon that read as
 
 **Right note** (1 attempt): the planet's sunlit limb wherever it crosses the strip, then deep space and a small grey moon catching the same starlight from the same direction
 
-### 04 Thalassa
+### 04 Orbital (replaced Thalassa)
 
-**Wallpaper** (2 attempts; the first was lost when Codex's usage limit stopped the agent before it saved it): A world with no land. An entire planet covered by a single endless ocean, seen from high orbit as it turns from day into night. Deep sapphire and ink-blue water, a long silver path where the star's light glints off the sea, colossal spiral storm systems of white cloud wheeling across the hemisphere, and a thin luminous blue line of atmosphere along the curved limb. The night side falls into darkness lit only by faint flickers of lightning inside the clouds. Nowhere a coastline, island or ice: only water, all the way around. The planet fills the lower part of the frame; above it, black space.
+**Wallpaper** (Gemini image generation, 16:9): Seen from deep space in vast, silent blue-black darkness (`#0a0d16`), a single incomprehensibly massive ring-shaped artificial world (thousands of kilometres across, like a Niven ringworld or Culture Orbital) tilts gracefully across the frame at a sweeping three-quarter perspective. Most of the colossal band is plunged in dark shadow, its razor-thin exterior armour catching only a faint silver edge of starlight. Along the far curving inner surface, direct light from an unseen distant star illuminates an impossibly delicate narrow strip of deep sapphire ocean, wispy white cloud bands, and tiny continent shadows — all dwarfed by the sheer width and emptiness of the ring's immense black outer hull and the vast void inside it. Along the dark night-side inner curve approaching the foreground, only microscopic, hair-fine pinpoint constellations of warm amber lights hint at civilisations living inside the band, making the scale feel staggering.
 
-**Left note** (rev. 1, 1 attempt): the planet's curved limb and thin blue atmosphere continuing into the night side, faint lightning flickering inside dark storm clouds; above, deep black space with a small pale moon
-
-**Right note** (1 attempt): the limb curving on, the sunlit ocean with further storm spirals; above, black space with a faint band of the Milky Way
+*(Previously slot 04 held Thalassa, an ocean world; replaced on 2026-11-22.)*
 
 ### 05 Tether
 

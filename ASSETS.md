@@ -9,18 +9,18 @@ The nine wallpapers are single-pass AI-generated 16:9 images, with no multi-pane
 | `01-gargantuan.webp` | A supermassive black hole seen almost edge-on: the far side of its accretion disk lensed over and under the shadow, the approaching side brighter |
 | `02-fusion.webp` | Inside a fusion reactor: a broad band of hydrogen plasma floating through the tiled vacuum vessel, which curves away on both sides like an endless tunnel |
 | `03-core.webp` | A rocky planet with a wedge cut out, showing crust, mantle, molten outer core and a white-hot inner core |
-| `04-ocean.webp` | Thalassa, a planet covered by one ocean, seen from orbit at the terminator with spiral storms and a sun-glint path |
+| `04-orbital.webp` | Orbital, a colossal razor-thin ringworld habitat tilted across deep space, dark armour in shadow with a sunlit inner strip of oceans and clouds and faint amber city lights on the night curve |
 | `05-elevator.webp` | Tether, a space elevator rising from an ocean world through the atmosphere at sunrise, a climber on the cable |
 | `06-giant.webp` | A ringed gas giant seen from inside its asteroid belt, two small moons beside it |
 | `07-lifter.webp` | Star Lifter, a ring of machines pulling a twisting column of plasma out of a red-orange star into a collector |
 | `08-dyson.webp` | A Dyson sphere two-thirds built around a yellow-white star, light escaping through its gaps, a construction swarm in orbit |
 | `09-gate.webp` | A ring-shaped gate whose opening folds space into a tunnel toward a distant spiral galaxy, a small ship approaching |
 
-All nine are shipped as a single set of **3840 × 2160** WebP files at quality 92, together 4.0 MB.
+All nine are shipped as a single set of **3840 × 2160** WebP files at quality 92–94, together 3.6 MB.
 
 ## Provenance and upscaling
 
-- `01-gargantuan` through `08-dyson` were generated as single-pass 16:9 (`1376 × 768`) images with Gemini image generation guided by the original compositions and prompts recorded in `GENERATION.md`.
+- `01-gargantuan`, `02-fusion`, `03-core`, `05-elevator`, `06-giant`, `07-lifter` and `08-dyson` were generated as single-pass 16:9 (`1376 × 768`) images with Gemini image generation guided by the original compositions and prompts recorded in `GENERATION.md`; `04-orbital` was generated as an original single-pass 16:9 (`1376 × 768`) composition with Gemini image generation.
 - `09-gate` is the original single-pass 16:9 (`1672 × 941`) image painted by OpenAI Codex's image tool from the prompt in `GENERATION.md`.
 - All nine were upscaled 4× with Real-ESRGAN (`realesrgan-x4plus`, realesrgan-ncnn-vulkan 0.2.5.0), resized to **3840 × 2160** with Lanczos, and blended 65 % Real-ESRGAN with 35 % plain Lanczos enlargement via `tools/build.py`: it keeps Real-ESRGAN's sharper edges without smoothed, plastic surfaces. The upscaled detail is synthesized, not recovered.
 
@@ -31,7 +31,7 @@ On a 16:9 screen every wallpaper is shown whole. Other shapes crop around the ce
 - **Gargantuan** keeps the shadow, photon ring and lensed arcs in the middle; ultrawide trims the outer vertical space while keeping the full disk.
 - **Fusion** runs its plasma band straight across the middle through the curving reactor tunnel.
 - **Core** keeps the entire cut-open planet framed cleanly in dark space.
-- **Thalassa** fills the lower two-thirds with the ocean and spiral storms beneath dark space.
+- **Orbital** tilts the colossal ring diagonally across deep space, keeping both the sunlit inner ribbon and night-side curve framed cleanly.
 - **Tether** keeps the hair-fine tether, climber and sunrise horizon across the middle.
 - **Giant** frames the ringed gas giant, moons, asteroid ridge and distant star cleanly with no cropped top limb.
 - **Star Lifter** keeps the plasma column and collector in the middle above the curved solar surface.

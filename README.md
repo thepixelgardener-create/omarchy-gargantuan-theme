@@ -31,10 +31,10 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 | [![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)](backgrounds/01-gargantuan.webp) | [![Fusion: a band of glowing plasma floating through the tiled tunnel of a fusion reactor](backgrounds/02-fusion.webp)](backgrounds/02-fusion.webp) |
 | A supermassive black hole. Gravity bends the far side of its disk over and under the shadow, and the side rushing toward you burns brighter. | A star in a bottle: a band of hydrogen plasma floating through the inside of a fusion reactor, whose tiled walls curve away like an endless tunnel. |
 
-| Core | Thalassa |
+| Core | Orbital |
 | --- | --- |
-| [![Core: a planet with a wedge cut out, its molten interior glowing](backgrounds/03-core.webp)](backgrounds/03-core.webp) | [![Thalassa: an ocean planet with spiral storms seen from orbit](backgrounds/04-ocean.webp)](backgrounds/04-ocean.webp) |
-| A planet opened to its heart: crust, mantle, a molten outer core and a white-hot inner core. | A world with no land: one ocean all the way around, turning from day into night. |
+| [![Core: a planet with a wedge cut out, its molten interior glowing](backgrounds/03-core.webp)](backgrounds/03-core.webp) | [![Orbital: a colossal ringworld tilted across deep space](backgrounds/04-orbital.webp)](backgrounds/04-orbital.webp) |
+| A planet opened to its heart: crust, mantle, a molten outer core and a white-hot inner core. | A world built as a ring: a colossal orbital habitat thousands of kilometres across, dark armour in shadow with a sunlit ribbon of oceans and clouds inside. |
 
 | Tether | Giant |
 | --- | --- |
