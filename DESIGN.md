@@ -1,6 +1,6 @@
 # Gargantuan design notes
 
-Gargantuan is a dark Omarchy theme about the largest things a civilisation could build or meet: a fusion reactor, a planet opened to its core, a colossal orbital ringworld, a space elevator, a Shkadov stellar engine, a machine that mines a star, a Dyson sphere, a gate to another galaxy and a supermassive black hole. The nine wallpapers climb the Kardashev scale in that order, from mastering a star in a bottle to standing beside the gravity of a billion suns.
+Gargantuan is a dark Omarchy theme about the largest things a civilisation could build or meet: a fusion reactor, a planet driven by its engines, a colossal orbital ringworld, a space elevator, a Shkadov stellar engine, a machine that mines a star, a Dyson sphere, a gate to another galaxy and a supermassive black hole. The nine wallpapers climb the Kardashev scale in that order, from mastering a star in a bottle to standing beside the gravity of a billion suns.
 
 This file is the contract for the palette. If a value changes, the rule it follows should still hold, and the values below should be measured again.
 
@@ -30,7 +30,7 @@ This file is the contract for the palette. If a value changes, the rule it follo
 | Color | Physical source | Role in the theme |
 |---|---|---|
 | Red | Redshift, light from things moving away | Errors |
-| Orange | The molten outer core | Numbers and constants |
+| Orange | The red-orange star the Star Lifter mines | Numbers and constants |
 | Yellow | Sunlight on a planet's day side | Warnings |
 | Green | Aurora in a planet's upper atmosphere | Success and additions |
 | Cyan | The light along the gate's inner rim | Types, escapes |
@@ -54,7 +54,7 @@ This file is the contract for the palette. If a value changes, the rule it follo
 | `accent` | Accretion amber: focus, highlights | `#f2a541` |
 | `selection` | Night-side indigo | `#2b3354` |
 | `red` | Redshift: errors | `#ec6464` |
-| `orange` | Molten core: numbers | `#f29350` |
+| `orange` | Star-lifter plasma: numbers | `#f29350` |
 | `yellow` | Sunlight: warnings | `#f0c35e` |
 | `green` | Aurora: success | `#84d892` |
 | `cyan` | Gate light | `#4cc2d6` |
