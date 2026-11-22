@@ -89,13 +89,11 @@ This is the second version. The first showed a bright violet ribbon that read as
 
 Both panels kept painting a second tether. For the final attempts Codex added its own instruction to paint only sky, atmosphere, ocean and clouds; that added wording was not recorded.
 
-### 06 Giant
+### 06 Stellar Engine (replaced Giant)
 
-**Wallpaper** (2 attempts; the second left more dark space above the rings): A gas giant seen from inside its own asteroid belt. A colossal banded planet of cream, amber, rust and pale blue, with storms the size of continents, crosses the frame, encircled by vast thin rings that sweep across the scene and cast a sharp curved shadow onto its cloud bands. In the foreground and middle distance the rocks of an asteroid belt drift in sunlight: craggy, cratered boulders from house-sized to mountain-sized, lit hard from one side by a small distant sun, with fine dust glittering between them. Two small moons hang beside the planet. Immense depth from the nearest rock to the planet behind.
+**Wallpaper** (Gemini image generation, 16:9): Hanging in vast, silent deep blue-black space (`#0a0d16`), a solitary warm yellow-white star glows quietly near the lower-left center, and suspended at a colossal orbital distance beside and curving around its upper-right hemisphere is a single incomprehensibly vast, paper-thin parabolic megastructure mirror — a smooth, dark metallic spherical-cap arc spanning millions of kilometres across space. Most of the gargantuan mirror's convex outer back is plunged in pitch-black shadow against the void, while its vast concave inner face catches a restrained, searing band of reflected gold-white starlight along its razor-thin curved rim, creating a dramatic, silent geometric composition of light and shadow. Almost 80% of the 16:9 frame is empty, quiet deep blue-black space (`#0a0d16`) with only sparse faint pinpoint stars.
 
-**Left note** (rev. 2, 6 attempts: five with rev. 1 were rejected for painting a second gas giant or moving the sun): the gas giant is NOT in this panel: it lies entirely to the right, beyond the strip. Continue the asteroids and the thin outer edge of the ring arc leftward exactly where they leave the strip; more craggy asteroids at varied distances, one large rock close to the camera half in shadow at the bottom; deep black space with sparse stars above
-
-**Right note** (1 attempt): the rings and the planet's limb continuing wherever they cross the strip; scattered asteroids thinning out into black space, lit from the same direction as in the strip
+*(Previously slot 06 held Giant, a ringed gas giant in an asteroid belt; replaced on 2026-11-22.)*
 
 ### 07 Star Lifter
 

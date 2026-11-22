@@ -36,10 +36,10 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 | [![Core: a planet with a wedge cut out, its molten interior glowing](backgrounds/03-core.webp)](backgrounds/03-core.webp) | [![Orbital: a colossal ringworld tilted across deep space](backgrounds/04-orbital.webp)](backgrounds/04-orbital.webp) |
 | A planet opened to its heart: crust, mantle, a molten outer core and a white-hot inner core. | A world built as a ring: a colossal orbital habitat thousands of kilometres across, dark armour in shadow with a sunlit ribbon of oceans and clouds inside. |
 
-| Tether | Giant |
+| Tether | Stellar Engine |
 | --- | --- |
-| [![Tether: a space elevator rising from an ocean world at sunrise](backgrounds/05-elevator.webp)](backgrounds/05-elevator.webp) | [![Giant: a ringed gas giant seen from inside its asteroid belt](backgrounds/06-giant.webp)](backgrounds/06-giant.webp) |
-| A road to orbit: a hair-fine space elevator climbing out of the atmosphere at sunrise. | A ringed gas giant seen from inside its own asteroid belt. |
+| [![Tether: a space elevator rising from an ocean world at sunrise](backgrounds/05-elevator.webp)](backgrounds/05-elevator.webp) | [![Stellar Engine: a colossal parabolic Shkadov Thruster mirror hovering beside a star](backgrounds/06-shkadov.webp)](backgrounds/06-shkadov.webp) |
+| A road to orbit: a hair-fine space elevator climbing out of the atmosphere at sunrise. | Moving a solar system: a Shkadov Thruster mirror millions of kilometres wide reflecting starlight to push an entire star across the galaxy. |
 
 | Star Lifter | Dyson |
 | --- | --- |
