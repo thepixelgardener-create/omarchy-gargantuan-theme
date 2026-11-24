@@ -15,17 +15,8 @@ The nine wallpapers are single-pass AI-generated 16:9 images, with no multi-pane
 | `07-lifter.webp` | Star Lifter, a ring of machines pulling a twisting column of plasma out of a red-orange star into a collector |
 | `08-dyson.webp` | A Dyson sphere two-thirds built around a yellow-white star, light escaping through its gaps, a construction swarm in orbit |
 | `09-gate.webp` | A ring-shaped gate whose opening folds space into a tunnel toward a distant spiral galaxy, a small ship approaching |
-| `intros/01-gargantuan.mp4` | Gargantuan's intro: hot gas flows along the accretion disk and lensed arcs with subtle Doppler shimmer |
-| `intros/02-fusion.mp4` | Fusion's intro: confined hydrogen plasma ripples through the tokamak while the dark chamber walls and indicator lights catch its glow |
-| `intros/03-engines.mp4` | Planetary Engines' intro: parallel blue-white fusion exhaust plumes stream outward down-left with subtle nozzle shimmer |
-| `intros/07-lifter.mp4` | Star Lifter's intro: the twisting plasma vortex streams upward from the boiling star into the dark collector ring |
-| `intros/09-gate.mp4` | Gate's intro: the folded-space aperture swirls quietly inside the rigid ring while the inner cyan rim and approaching ship's engine pulse |
 
-All nine stills are shipped as a single set of **3840 × 2160** WebP files at quality 92–94, together 3.2 MB.
-
-## Animated intros
-
-The five clips under `backgrounds/intros/` are 7-second, 30 fps H.264 High (`yuv420p`, `bt709`, `+faststart`) animations at **2560 × 1440** — matching the built-in Omarchy themes' intros — generated procedurally from the 4K stills by `tools/intros.py` rather than by a video model. Each clip uses dual-layer phase-blended flow-map advection and physically coupled lighting modulation masked strictly to the luminous gas, plasma, exhaust or folded-space aperture, keeping rigid structures and deep space completely still. Motion ramps smoothly out of the still over the first 1.2 s and settles back over the final 1.8 s so the first and last frames match the still wallpaper with no handover jump.
+All nine are shipped as a single set of **3840 × 2160** WebP files at quality 92–94, together 3.2 MB.
 
 ## Provenance and upscaling
 

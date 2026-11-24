@@ -29,12 +29,12 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 | Gargantuan | Fusion |
 | --- | --- |
 | [![Gargantuan: a supermassive black hole with a lensed accretion disk](backgrounds/01-gargantuan.webp)](backgrounds/01-gargantuan.webp) | [![Fusion: a band of glowing plasma floating through the tiled tunnel of a fusion reactor](backgrounds/02-fusion.webp)](backgrounds/02-fusion.webp) |
-| A supermassive black hole. Gravity bends the far side of its disk over and under the shadow, and the side rushing toward you burns brighter. Includes an [intro](backgrounds/intros/01-gargantuan.mp4). | A star in a bottle: a band of hydrogen plasma floating through the inside of a fusion reactor, whose tiled walls curve away like an endless tunnel. Includes an [intro](backgrounds/intros/02-fusion.mp4). |
+| A supermassive black hole. Gravity bends the far side of its disk over and under the shadow, and the side rushing toward you burns brighter. | A star in a bottle: a band of hydrogen plasma floating through the inside of a fusion reactor, whose tiled walls curve away like an endless tunnel. |
 
 | Planetary Engines | Orbital |
 | --- | --- |
 | [![Planetary Engines: a dark planet pushed by a band of fusion thrusters](backgrounds/03-engines.webp)](backgrounds/03-engines.webp) | [![Orbital: a colossal ringworld tilted across deep space](backgrounds/04-orbital.webp)](backgrounds/04-orbital.webp) |
-| Moving a world: a band of mountain-sized fusion engines pushing a barren planet out of its orbit. Includes an [intro](backgrounds/intros/03-engines.mp4). | A world built as a ring: a colossal orbital habitat thousands of kilometres across, dark armour in shadow with a sunlit ribbon of oceans and clouds inside. |
+| Moving a world: a band of mountain-sized fusion engines pushing a barren planet out of its orbit. | A world built as a ring: a colossal orbital habitat thousands of kilometres across, dark armour in shadow with a sunlit ribbon of oceans and clouds inside. |
 
 | Tether | Stellar Engine |
 | --- | --- |
@@ -44,18 +44,16 @@ Nine scenes, the theme's namesake first and then a climb up the Kardashev scale,
 | Star Lifter | Dyson |
 | --- | --- |
 | [![Star Lifter: machines pulling a column of plasma out of a star](backgrounds/07-lifter.webp)](backgrounds/07-lifter.webp) | [![Dyson: a Dyson sphere under construction, starlight escaping through its gaps](backgrounds/08-dyson.webp)](backgrounds/08-dyson.webp) |
-| Harvesting a star: a ring of machines pulls a twisting column of plasma out of its surface. Includes an [intro](backgrounds/intros/07-lifter.mp4). | A star being enclosed: a Dyson sphere two-thirds built, its light escaping through the gaps. |
+| Harvesting a star: a ring of machines pulls a twisting column of plasma out of its surface. | A star being enclosed: a Dyson sphere two-thirds built, its light escaping through the gaps. |
 
 | Gate | |
 | --- | --- |
 | [![Gate: a ring-shaped gate showing a distant galaxy through folded space](backgrounds/09-gate.webp)](backgrounds/09-gate.webp) | |
-| A gate between galaxies: through the ring, space folds into a tunnel to a distant spiral. Includes an [intro](backgrounds/intros/09-gate.mp4). | |
+| A gate between galaxies: through the ring, space folds into a tunnel to a distant spiral. | |
 
-### Resolution, displays and intros
+### Resolution and displays
 
-Every wallpaper is a single continuous **3840 × 2160** (16:9) WebP image with no stitching or seams. Ultrawide, 16:10 and portrait screens crop cleanly around the central subject.
-
-Five scenes (`01-gargantuan`, `02-fusion`, `03-engines`, `07-lifter` and `09-gate`) also include 7-second **2560 × 1440** H.264 intro animations in `backgrounds/intros/`. Omarchy plays the matching intro once when you log in or switch to the theme, and each clip starts and ends on the exact still so it settles onto the desktop without a jump. Toggle intros anytime with `omarchy theme bg intro disable` / `enable`. [ASSETS.md](ASSETS.md) records dimensions, provenance and processing.
+Every wallpaper is a single continuous **3840 × 2160** (16:9) WebP image with no stitching or seams. Ultrawide, 16:10 and portrait screens crop cleanly around the central subject. [ASSETS.md](ASSETS.md) records dimensions, provenance and upscaling.
 
 ## Palette checks
 

@@ -95,11 +95,11 @@ Every one of the fourteen standard and bright terminal colors reaches at least 6
 
 ## Wallpapers
 
-The theme ships one set of nine single-pass **3840 × 2160** 4K wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`, plus five procedural 7-second **2560 × 1440** H.264 intro animations in `backgrounds/intros/`. Each scene keeps its main subject near the middle against quiet deep space so 16:9, 16:10, ultrawide and portrait displays all frame cleanly.
+The theme ships one set of nine single-pass **3840 × 2160** 4K wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`. Each scene keeps its main subject near the middle against quiet deep space so 16:9, 16:10, ultrawide and portrait displays all frame cleanly.
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine 4K wallpapers and five intro animations in `backgrounds/`, the build, intro and local-install scripts in `tools/`, the repository's icon in `assets/` and these notes.
+Shipped: `colors.toml`, `icons.theme`, nine 4K wallpapers in `backgrounds/`, the build and local-install scripts in `tools/`, the repository's icon in `assets/` and these notes.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 
