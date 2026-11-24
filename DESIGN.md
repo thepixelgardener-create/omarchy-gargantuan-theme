@@ -36,7 +36,7 @@ This file is the contract for the palette. If a value changes, the rule it follo
 | Cyan | The light along the gate's inner rim | Types, escapes |
 | Blue | Blueshift, light from things moving closer | Information and links |
 | Magenta | Hydrogen plasma glowing in the fusion reactor | Keywords |
-| Brown | Rock of a planet's crust and of the asteroid belt | Secondary text accents |
+| Brown | Barren rock of a planet's crust | Secondary text accents |
 
 ## Palette
 
@@ -60,7 +60,7 @@ This file is the contract for the palette. If a value changes, the rule it follo
 | `cyan` | Gate light | `#4cc2d6` |
 | `blue` | Blueshift: information | `#729ef2` |
 | `magenta` | Fusion plasma | `#b48bf0` |
-| `brown` | Crust and asteroid rock | `#b88b66` |
+| `brown` | Planetary crust rock | `#b88b66` |
 
 The bright variants keep the same hues and add brightness: `#f59393`, `#f6d78f`, `#ade6b6`, `#83d5e2`, `#9dbcf6` and `#cbaef5`.
 
@@ -95,11 +95,11 @@ Every one of the fourteen standard and bright terminal colors reaches at least 6
 
 ## Wallpapers
 
-The theme ships one set of nine single-pass **3840 × 2160** 4K wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`. Each scene keeps its main subject near the middle against quiet deep space so 16:9, 16:10, ultrawide and portrait displays all frame cleanly.
+The theme ships one set of nine single-pass **3840 × 2160** 4K wallpapers in `backgrounds/01-gargantuan.webp` through `backgrounds/09-gate.webp`, plus five procedural 7-second **2560 × 1440** H.264 intro animations in `backgrounds/intros/`. Each scene keeps its main subject near the middle against quiet deep space so 16:9, 16:10, ultrawide and portrait displays all frame cleanly.
 
 ## What the theme ships, and what it leaves to Omarchy
 
-Shipped: `colors.toml`, `icons.theme`, nine 4K wallpapers in `backgrounds/`, the build and local-install scripts in `tools/`, the repository's icon in `assets/` and these notes.
+Shipped: `colors.toml`, `icons.theme`, nine 4K wallpapers and five intro animations in `backgrounds/`, the build, intro and local-install scripts in `tools/`, the repository's icon in `assets/` and these notes.
 
 Left to Omarchy's templates on purpose: the terminal configs, Neovim, VS Code, btop, Chromium, the shell and Hyprland. Omarchy generates them from `colors.toml`, and the checks above cover the colors those templates use. Omarchy also drops `.lua` files, terminal configs and `vscode.json` from themes installed through git, so shipping them would not work anyway.
 
